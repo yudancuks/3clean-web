@@ -1,0 +1,33 @@
+nav.bg-white.shadow-sm.sticky.top-0.z-50
+  .container.mx-auto.px-7.py-4.flex.justify-between.items-center
+    // Logo
+    div
+      img(src="/assets/images/landing/logo.svg" alt="Logo")
+    // Navigation Links
+    ul.hidden.space-x-6.text-gray-700.font-medium(class='md:flex')
+      li
+        a.a-nav(href='/' class='hover:text-blue-500') Home
+      li
+        a.a-nav(href='/services' class='hover:text-blue-500') Services
+      li
+        a.a-nav(href='/prices/house-cleaning' class='hover:text-blue-500') Price
+      li
+        a.a-nav(href='/about-us' class='hover:text-blue-500') About Us
+      li
+        a.a-nav(href='/reviews' class='hover:text-blue-500') Reviews
+    // Right Buttons
+    .hidden.space-x-4(class='md:flex')
+      button.px-6.py-2.btn.btn-outline.btn-primary.rounded-full Sign In
+      a.px-6.py-2.btn.btn-primary.rounded-full.text-white(href="/book-now") Book Now
+    // Mobile Menu Button
+    button.text-gray-700(@click='toggleMenu' class='md:hidden focus:outline-none')
+      svg.w-6.h-6(fill='none' stroke='currentColor' stroke-width='2' viewbox='0 0 24 24')
+        path(stroke-linecap='round' stroke-linejoin='round' d='M4 6h16M4 12h16M4 18h16')
+  // Mobile Menu
+  .bg-white.border-t.border-gray-200.p-4.space-y-4(v-if='isOpen' class='md:hidden')
+    a.block.text-gray-700(href='#') Home
+    a.block.text-gray-700(href='#') Services
+    a.block.text-gray-700(href='#') About
+    a.block.text-gray-700(href='#') Contact
+    button.w-full.px-4.py-2.btn.btn-outline.btn-primary Sign In
+    a.w-full.px-4.py-2.btn.btn-primary.text-white(href="/book-now") Book Now

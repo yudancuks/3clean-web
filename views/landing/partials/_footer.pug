@@ -1,0 +1,64 @@
+.bg-gray-100
+  // Banner with Background Image
+  .relative.bg-cover.bg-center.flex.items-center(class="h-[420px] bg-[url('/assets/images/landing/menu-footer.png')]")
+    .absolute.inset-0.bg-black.bg-opacity-50
+    // Dark Overlay
+    .container.relative.mx-auto.p-8
+      h1.h1-hero.text-white
+        | WELCOME TO OUR 
+        br
+        |           PRO-CLEANING COMPANY!
+      p.text-lightgray.mt-2.h2-service
+        | Expert Cleaning Solutions for Homes and Offices &ndash; 
+        br
+        |           Trust Us to Make Every Corner Sparkle with Care and Precision!
+      a.btn.btn-primary.btn-wide.mt-4(href="/book-now") BOOK NOW &rarr;
+  // Footer
+  footer.bg-base-200.text-base-content.py-12
+    .container.mx-auto.flex.flex-col.items-start.px-5(class='md:flex-row')
+      // Left: Logo & Company Name
+      .w-full.mb-6(class='md:w-1/3 md:mb-0')
+        h2.text-xl.font-bold Let&rsquo;s Work With Us!
+        img(src="/assets/images/landing/logo.svg" alt="Logo" style="height: 70px; margin-top: 40px; margin-bottom:45px;")
+        p.mt-4.text-gray-500 &copy; 2025 3Cleaning Sydney. All rights reserved.
+      // Right: Menu + Email Input
+      .w-full.grid.grid-cols-2.gap-8(class='md:w-2/3 md:grid-cols-3')
+        // Support
+        div
+          h3.text-lg.font-semibold Services
+          ul.mt-2.space-y-2
+            li
+              a.link.link-hover(href='/services') Our Service
+            li
+              a.link.link-hover(href='/prices/house-cleaning') Price
+            li
+              a.link.link-hover(href='/reviews') Review
+        // Company
+        div
+          h3.text-lg.font-semibold Contact Info
+          ul.mt-2.space-y-2
+            li
+              a.link.link-hover(href="https://www.google.com/maps/search/?api=1&query=843+Apple+Lane+Peoria" target="_blank")
+                 i.ri-map-pin-line.h-6.w-6 
+                 span  &nbsp; 843, Apple LanePeoria
+            li
+              a.link.link-hover(href="tel:+12025550153" target="_blank")
+                 i.ri-phone-line.h-6.w-6 
+                 span  &nbsp; +1 - 202 - 555 - 0153
+            li
+              a.link.link-hover(href="mailto:yudana112@gmail.com" target="_blank")
+                 i.ri-mail-line.h-6.w-6 
+                 span  &nbsp; email@3clean.co
+        // Services
+        div
+          h3.text-lg.font-semibold Company
+          ul.mt-2.space-y-2
+            li
+              a.link.link-hover(href='/about-us') About Us
+
+        // Contact & Newsletter
+        .col-span-2.mt-6(class='md:col-span-2')
+          h3.text-lg.font-semibold Join our newsletter
+          .mt-2.flex
+            input.input.input-bordered.w-full(type='email' placeholder='Enter your email')
+            button.btn.btn-primary.ml-2 Send

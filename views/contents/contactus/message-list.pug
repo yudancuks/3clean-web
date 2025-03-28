@@ -1,0 +1,29 @@
+extends ../../layout
+
+block content
+    .page-header
+        h3.page-title  
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item 
+                    a(href='#') Contact Us
+                li.breadcrumb-item.active(aria-current='page') Message List
+    .row
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    table#productTable.table.table-hover
+                        thead
+                            tr
+                                th NAME
+                                th EMAIL
+                                th TEXT MESSAGES
+                                th RECEIVED DATE
+                        tbody
+                            each message in messages
+                                tr
+                                    td= message.name
+                                    td= message.email
+                                    td= message.body
+                                    td= message.createdAt
+                                   

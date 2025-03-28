@@ -1,0 +1,78 @@
+extends ../../layout
+
+block pageStyles
+    link(rel='stylesheet' href=`${baseUrl}/public/css/texttag.css`)
+
+block content
+    .page-header
+        h3.page-title  #{discount ? 'Edit Discount' : 'Create New Discount'}
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard`) Dashboard
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/products/discount-list`) Discount List
+                li.breadcrumb-item.active(aria-current='page') #{discount ? 'Edit Discount' : 'Create Discount'}
+    .row
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    form#form-discount.form-sample(method="POST" enctype="multipart/form-data")
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='name') Discount Name
+                                        input#discountId(type='hidden' name='discountId' value=discount ? discount._id : '')
+                                        input#name.form-control(name='name' type='text' placeholder='Discount Name...' required value=discount ? discount.name : '')
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='type') Discount Type
+                                        select#type.form-control(name='type')
+                                            option(value='percentage', selected=discount && discount.type === 'percentage') Percentage
+                                            option(value='fixed', selected=discount && discount.type === 'fixed') Fixed
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='value') Discount Value
+                                        input#value.form-control(name='value' type='text' placeholder='Discount Value...' required value=discount ? discount.value : '')
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-12
+                                          label(for='description') Product Codes [separated by comas]
+                                          #tagContainer.tag-input(onclick="document.getElementById('tagInput')")
+                                            input#tagInput.form-control(
+                                                type='text' 
+                                                placeholder='Type here and press space...' 
+                                            )
+                                          input#products(type='hidden' name='products' value='')
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='validFrom') Valid From
+                                        input#validFrom.form-control(placeholder='yyyy-mm-dd' value=discount ? discount.validFrom : '' name="validFrom")
+
+                                        
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='validUntil') Expired
+                                        input#validUntil.form-control(placeholder='yyyy-mm-dd' value=discount ? discount.validUntil : '' name="validUntil")
+                                        
+                        .text-right
+                            button.btn.btn-gradient-primary.mr-2(type='submit') Submit
+                            button.btn.btn-light Clear Form
+
+block pageScripts
+  script(src=`${baseUrl}/public/js/texttag.js`)
+  script(src=`${baseUrl}/public/js/forms/discount-post.js`)
+  script.
+    const prod = !{JSON.stringify(validProductIds) || null};
+    const existingProducts = prod || '[]'; // Get products from data attribute
+    populateTags(existingProducts);
+                            
+                        

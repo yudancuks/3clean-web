@@ -1,0 +1,36 @@
+extends ../../layout
+
+block pageStyles
+  link(rel='stylesheet' href=`${baseUrl}/public/css/tableformat.css`)
+
+block content
+    .page-header
+        a.btn.btn-gradient-primary.btn-fw(href=`${baseUrl}/blogs/post-create`) Create Post
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard`) Dashboard
+                li.breadcrumb-item.active(aria-current='page') Post List
+    .row
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    table#productTable.table.table-responsive.table-hover
+                        thead
+                            tr
+                                th TITLE
+                                th BODY
+                                th IMAGE
+                                th ACTIONS
+                        tbody
+                            each vsight in vsights
+                                tr
+                                    td= vsight.title
+                                    td= vsight.body
+                                    td
+                                        img(src=vsight.image alt=vsight.title style="width: 200px; height: 120px; border-radius:0")
+                                    td.text-center
+                                        a.btn.btn-primary.btn-sm(href=`/blogs/post-edit/${vsight._id}` title="Edit")
+                                            i.mdi.mdi-grease-pencil 
+                                        a.btn.btn-danger.btn-sm(href=`/blogs/post-delete/${vsight._id}` title="Delete" onclick="return confirm('Are you sure you want to delete this item?')") 
+                                            i.mdi.mdi-delete

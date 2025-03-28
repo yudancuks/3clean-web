@@ -1,0 +1,50 @@
+extends ../../layout
+
+block pageStyles
+    link(rel='stylesheet' href=`${baseUrl}/public/css/texttag.css`)
+
+block content
+    .page-header
+        h3.page-title  #{data ? 'Edit Package' : 'Create New Package'}
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard`) Dashboard
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard/packages/list`) Package List
+                li.breadcrumb-item.active(aria-current='page') #{data ? 'Edit Package' : 'Create New Package'}
+    .row
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    form#form-package.form-sample(enctype="multipart/form-data" method="POST")
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-6
+                                        label(for='serviceId') Service Name
+                                        input#inputId(type='hidden' name='inputId' value=data ? data._id : '')
+                                        select#serviceId.form-control(name="serviceId")
+                                            each option in services
+                                                option(value=option._id, selected=data && data.serviceId === option._id)= option.name
+                                    .col-sm-6
+                                        label(for='totalPrice') Package Price
+                                        input#totalPrice.form-control(name='totalPrice' type='text' placeholder='Package Price..' required value=data ? data.totalPrice : '')
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='name') Package Name
+                                        input#name.form-control(name='name' type='text' placeholder='Service Name..' required value=data ? data.name : '')
+
+                                        
+                        .text-right
+                            button.btn.btn-gradient-primary.mr-2(type='submit') Submit
+                            button.btn.btn-light Clear Form
+
+block pageScripts
+    script(src=`${baseUrl}/public/js/forms/form-packages.js`)
+
+                                        
+                            
+                        

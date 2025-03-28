@@ -1,0 +1,78 @@
+extends ../../landing
+
+block pageStyles
+
+
+block content
+    section.hero-section.bg-100.mt-8.mb-8
+        // Efect Blur
+        .absolute.top-10.left-0.w-40.h-40.bg-orange-200.rounded-full.blur-2xl.opacity-80
+        .absolute.right-0.w-40.h-40.bg-blue-200.rounded-full.blur-2xl.opacity-80(class='top-2/3')
+        .hero-content.container.flex-col.mx-auto
+            // First Row
+            .grid.grid-cols-1.gap-8.items-start(class='lg:grid-cols-3')
+                // Right Column 1/3
+                .flex.flex-col.justify-start.items-start
+                    .card.shadow-xl.p-4
+                        .card.bg-base-200.w-96.shadow-xl
+                            .card-body
+                                ul.space-y-2.p-6
+                                    li.p-3.bg-blue-100.rounded-lg.font-semibold.flex.items-center.gap-2
+                                        i.ri-home-line
+                                        | &nbsp; House Cleaning
+                                    li.p-3.rounded-lg.flex.items-center.gap-2(class='hover:bg-blue-100')
+                                        i.ri-hand-heart-line
+                                        | &nbsp; Deep Cleaning
+                                    li.p-3.rounded-lg.flex.items-center.gap-2(class='hover:bg-blue-100')
+                                        i.ri-brush-ai-line
+                                        | &nbsp; End Of Lease Cleaning
+                                    li.p-3.rounded-lg.flex.items-center.gap-2(class='hover:bg-blue-100')
+                                        i.ri-registered-line
+                                        | &nbsp; Regular Cleaning
+                                    li.p-3.rounded-lg.flex.items-center.gap-2(class='hover:bg-blue-100')
+                                        i.ri-file-paper-2-line
+                                        | &nbsp; Carpet Cleaning
+                                    li.p-3.rounded-lg.flex.items-center.gap-2(class='hover:bg-blue-100')
+                                        i.ri-hotel-bed-line
+                                        | &nbsp; Mattress Cleaning
+                                    li.p-3.rounded-lg.flex.items-center.gap-2(class='hover:bg-blue-100')
+                                        i.ri-mist-line
+                                        | &nbsp; Rug Cleaning
+                                    li.p-3.rounded-lg.flex.items-center.gap-2(class='hover:bg-blue-100')
+                                        i.ri-sofa-line
+                                        | &nbsp; Upholstery Cleaning
+                // Left Column 2/3
+                .space-y-4.flex.flex-col.justify-start.items-start(class='lg:col-span-2')
+                    .container.mx-auto
+                        h2.text-center.text-2xl.font-bold.mb-6 House Cleaning Prices
+                            table.table.w-full.border.border-gray-300.rounded-lg.shadow-md
+                                thead
+                                    tr.bg-blue-400.text-left.text-black.font-semibold
+                                        th.p-4 Service Type
+                                        th.p-4 Price
+                                tbody
+                                   each pkg in packages
+                                        tr.bg-gray-100
+                                            td.p-4= pkg.name
+                                            td.p-4= "$" + pkg.totalPrice
+
+                            .flex.justify-center.mt-6
+                                a.btn.btn-block.btn-primary.px-6.py-3.text-lg.flex.items-center.gap-2.rounded-full.shadow-lg(href="/book-now")
+                                    i.ri-shopping-cart-line
+                                    |  Book Now
+                    .container.mx-auto
+                        h2.text-center.text-2xl.font-bold.mb-6 Add-ons Services
+                            table.table.w-full.border.border-gray-300.rounded-lg.shadow-md
+                                thead
+                                    tr.bg-blue-200.text-left.text-black.font-bold
+                                        td.p-4 Service Type
+                                        td.p-4 Price
+                                tbody
+                                    each adons in addOns
+                                        tr.bg-gray-100
+                                            td.p-4= adons.name
+                                            td.p-4= "$" + adons.totalPrice
+    
+
+                            
+block pageScripts

@@ -1,0 +1,26 @@
+doctype html
+html(lang='en')
+  head
+    include partials/_header
+  .container-scroller
+    include partials/_navbar
+    .container-fluid.page-body-wrapper
+      include partials/_sidebar
+      .main-panel
+        .content-wrapper
+          block content
+        include partials/_footer
+  script(src=`${baseUrl}/public/vendors/js/vendor.bundle.base.js`)
+  script(src=`${baseUrl}/public/js/off-canvas.js`)
+  script(src=`${baseUrl}/public/js/jquery.cookie.js`) 
+  script(src=`${baseUrl}/public/js/misc.js`)
+  script(src='https://code.jquery.com/jquery-3.6.0.min.js')
+  script(src=`${baseUrl}/public/js/jquery.cookie.js`) 
+  script(src='https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js')
+    // DataTables Initialization
+  script.
+    $(document).ready(function() {
+        $('#productTable').DataTable();
+    });
+// Placeholder for page-specific JavaScript
+block pageScripts

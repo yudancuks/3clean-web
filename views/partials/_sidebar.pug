@@ -1,0 +1,50 @@
+nav#sidebar.sidebar.sidebar-offcanvas
+      ul.nav
+        li.nav-item.nav-profile
+          a.nav-link(href='#')
+            .nav-profile-image
+              img(src=`${baseUrl}/public/assets/images/faces/face1.jpg` alt='profile')
+              span.login-status.online
+              // change to offline or busy as needed
+            .nav-profile-text.d-flex.flex-column
+              span.font-weight-bold.mb-2 Dana
+              span.text-secondary.text-small IT Backend Engineer
+            i.mdi.mdi-bookmark-check.text-success.nav-profile-badge
+        li.nav-item
+          a.nav-link(href='/dashboard')
+            span.menu-title Dashboard
+            i.mdi.mdi-home.menu-icon
+        li.nav-item
+          a.nav-link(data-toggle='collapse' href='#ui-products' aria-expanded='false' aria-controls='ui-products')
+            span.menu-title Services &amp; Packages
+            i.mdi.mdi-content-paste.menu-icon
+          #ui-products.collapse
+            ul.nav.flex-column.sub-menu
+              li.nav-item
+                a.nav-link(href='/dashboard/services/list') Services
+              li.nav-item
+                a.nav-link(href='/dashboard/packages/list') Packages
+              li.nav-item
+                a.nav-link(href='/dashboard/addons/list') Add-Ons
+        li.nav-item
+          a.nav-link(data-toggle='collapse' href='#ui-promo' aria-expanded='false' aria-controls='ui-promo')
+            span.menu-title Booking Order
+            i.mdi.mdi-calendar-clock.menu-icon
+          #ui-promo.collapse
+            ul.nav.flex-column.sub-menu
+              li.nav-item
+                a.nav-link(href='/dashboard/orders/list') Orders 
+              li.nav-item
+                a.nav-link(href='/dashboard/invoices/list') Invoices
+        li.nav-item
+          a.nav-link(data-toggle='collapse' href='#ui-accnt' aria-expanded='false' aria-controls='ui-accnt')
+            span.menu-title Peoples
+            i.mdi.mdi-account-multiple.menu-icon
+          #ui-accnt.collapse
+            ul.nav.flex-column.sub-menu
+              li.nav-item
+                a.nav-link(href='/peoples/admin-list') Admins
+              li.nav-item
+                a.nav-link(href='/peoples/user-list') Customers
+              li.nav-item
+                a.nav-link(href='/peoples/cleaner-list') Cleaners

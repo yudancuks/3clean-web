@@ -1,0 +1,13 @@
+doctype html
+html(lang='en')
+  head
+    include landing/partials/_header
+  .container-scroller
+    include landing/partials/_navbar
+    .container-fluid.page-body-wrapper
+      .main-panel
+        .content-wrapper
+          block content
+        include landing/partials/_footer
+// Placeholder for page-specific JavaScript
+block pageScripts

@@ -1,0 +1,136 @@
+extends ../../layout
+
+block pageStyles
+  link(rel='stylesheet' href=`${baseUrl}/public/css/imagepreview.css`)
+
+block content
+    .page-header
+        h3.page-title #{product ? 'Edit Product' : 'Create New Product'}
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard`) Dashboard
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/products/product-list`) Product List
+                li.breadcrumb-item.active(aria-current='page') #{product ? 'Edit Product' : 'Create New Product'}
+    .row
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    form#form-product.form-sample(enctype="multipart/form-data" method="POST")
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='code') Product Code
+                                        input#productId(type='hidden' name='productId' value=product ? product._id : '')
+                                        input#code.form-control(name='code' type='text' placeholder='Product Code...' required value=product ? product.identityNumber : '')
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='name') Product Name
+                                        input#name.form-control(name='name' type='text' placeholder='Product Name...' required value=product ? product.name : '')
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='brand') Brand
+                                        input#brand.form-control(name='brand' type='text' placeholder='Brand...' required value=product ? product.brand : '')
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='manufacture') Manufacture
+                                        input#manufacture.form-control(name='manufacture' type='text' placeholder='Manufacture...' required value=product ? product.manufacture : '')
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-12
+                                          label(for='descriptionText') Description
+                                          textarea#descriptionText.form-control(name='descriptionText' rows='4' required )=product ? product.description : ''
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='price') Price
+                                        input#price.form-control(name='price' type='text' placeholder='Price...' required value=product ? product.price : '')
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='shopee') Shopee
+                                        input#shopee.form-control(name='shopee' type='text' placeholder='Shopee...' value=product ? product.shopee : '')
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='tokopedia') Tokopedia
+                                        input#tokopedia.form-control(name='tokopedia' type='text' placeholder='Tokopedia...' value=product ? product.tokopedia : '')
+                        
+                    
+
+
+                        .row
+                            .col-md-4
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='thumbnail') Thumbnail
+                                        input#thumbnail.form-control(name='thumbnail' type='file' accept='image/*')
+                            .col-md-4
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='images') Images
+                                        input#images.form-control(name='images' type='file' accept='image/*' multiple='')
+                            .col-md-4
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='detailproduct') Detail Product
+                                        input#detailproduct.form-control(name='detailproduct' type='file' accept='image/*')
+                        .row
+                            .col-md-4
+                                .form-group.row
+                                    .col-sm-12
+                                        .preview
+                                            img#imagePreview.img-fluid(
+                                                src=product && product.thumbnail ? product.thumbnail : '#',
+                                                alt='Thumbnail Preview',
+                                                style=product && product.thumbnail ? 'display: block;' : 'display: none;'
+                                                )
+                            .col-md-4
+                                .form-group.row
+                                    .col-sm-12
+                                        #imagePreviewContainer.image-preview-container
+                            .col-md-4
+                                .form-group.row
+                                    .col-sm-12
+                                        .preview
+                                            img#imagedetailPreview.img-fluid(
+                                                src=product && product.detailProduct ? product.detailProduct : '#',
+                                                alt='Detail Product Preview',
+                                                style=product && product.detailProduct ? 'display: block;' : 'display: none;'
+                                                )
+                        .text-right
+                            button.btn.btn-gradient-primary.mr-2(type='submit') Submit
+                            button.btn.btn-light Clear Form
+block pageScripts
+  script(src=`${baseUrl}/public/js/imagepreview.js`)
+  script(src=`${baseUrl}/public/js/forms/product-post.js`)
+  script.
+    const product = !{JSON.stringify(product) || null};
+    if(product)
+        displayExistingImages(product.images); // Call when fetching data for editing
+  script(src=`${baseUrl}/public/vendors/tinymce/tinymce.min.js` referrerpolicy='origin')
+  script.
+      tinymce.init({
+        selector: '#descriptionText',
+        plugins: 'link table lists',
+        toolbar: 'undo redo | bold italic | bullist numlist | alignleft aligncenter alignright alignjustify | table',
+        height: 500,
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save(); // Sync content to the hidden textarea
+            });
+        },
+      });
+
+                                        
+                            
+                        

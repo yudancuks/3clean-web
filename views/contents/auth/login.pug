@@ -1,0 +1,35 @@
+doctype html
+head
+  // Required meta tags
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  title Login - 3 Clean Dashboard Management 
+  // plugins:css
+  link(rel='stylesheet' href=`${baseUrl}/public/vendors/mdi/css/materialdesignicons.min.css`)
+  link(rel='stylesheet' href=`${baseUrl}/public/vendors/css/vendor.bundle.base.css`)
+  link(rel='stylesheet' href=`${baseUrl}/public/css/style.css`)
+  // End layout styles
+  link(rel='shortcut icon' href='public/assets/images/favicon.ico')
+.container-scroller
+  .container-fluid.page-body-wrapper.full-page-wrapper
+    .content-wrapper.d-flex.align-items-center.auth
+      .row.flex-grow
+        .col-lg-4.mx-auto
+          .auth-form-light.text-left.p-5
+            .brand-logo.text-center
+              img(src=`${baseUrl}/public/assets/images/logo.png`)
+            form#form-login.pt-3
+              .form-group
+                input#emailInput.form-control.form-control-lg(type='email' placeholder='Email' name='email' required)
+              .form-group
+                input#passwordInput.form-control.form-control-lg(type='password' placeholder='Password' name='password' required)
+              .mt-3
+                button.btn.btn-block.btn-gradient-primary.mr-2(type='submit') Sign In
+    // content-wrapper ends
+  // page-body-wrapper ends
+// container-scroller
+// plugins:js
+script(src='public/vendors/js/vendor.bundle.base.js')
+block pageScripts
+    script(src=`${baseUrl}/public/js/forms/auth-login.js`) 
+// endinject

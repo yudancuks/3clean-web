@@ -1,0 +1,46 @@
+extends ../../layout
+
+block pageStyles
+  link(rel='stylesheet' href=`${baseUrl}/public/css/tableformat.css`)
+
+block content
+    .page-header
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard`) Dashboard
+                li.breadcrumb-item.active(aria-current='page') List Order
+    .row
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    table#productTable.table.table-responsive.table-hover.w-100
+                        thead
+                            tr
+                                th PAYMENT STATUS
+                                th ORDER CODE
+                                th CUSTOMER NAME
+                                th CUSTOMER EMAIL
+                                th SERVICE NAME
+                                th SERVICE PRICE
+                                th ACTIONS
+                        tbody
+                            each l in list
+                                tr
+                                    td Pending
+                                    td= l.orderId
+                                    td= l.orderDetails.customer.firstname+' '+l.orderDetails.customer.lastname 
+                                    td= l.orderDetails.customer.email
+                                    td
+                                        | #{l.orderDetails.package.name}
+                                        br
+                                        | #{l.orderDetails.package.detailPackage.name}
+                                        br
+                                        | Add-Ons :
+                                        each addon in l.orderDetails.addOns
+                                            br
+                                            | #{addon.name}
+                                    td= l.orderDetails.totalPrice
+                                    td.text-center
+                                        a.btn.btn-primary.btn-sm(href=`/dashboard/invoices/generate/${l.orderId}` title="Render")
+                                            i.mdi.mdi-cloud-print-outline

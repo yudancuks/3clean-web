@@ -1,0 +1,99 @@
+extends ../../landing
+
+block pageStyles
+
+
+block content
+
+    section.hero-section.container.mx-auto.py-8.px-6.flex.flex-col.mb-8(class='md:py-12')
+        // Efect Blur
+        .absolute.top-10.left-0.w-40.h-40.bg-orange-200.rounded-full.blur-2xl.opacity-80
+        .absolute.right-0.w-40.h-40.bg-blue-200.rounded-full.blur-2xl.opacity-80(class='top-2/3')
+        .flex.items-center.justify-center.text-left.p-10.mb-8(class="h-auto md:h-[420px]")
+          div(class="w-1/2 mx-auto justify-center")
+              p.h1-hero1 
+                  | Become Our Next 
+                  br
+                  | Happy Customer!
+          div(class="w-1/2 mx-auto justify-center")
+              p.h2-service
+                  | Join the growing number of satisfied clients who trust 
+                  br
+                  | 3cleaning Sydney for their cleaning needs. Book your 
+                  br
+                  | service today and experience the difference for yourself!
+                  br
+                  | Let 3cleaning Sydney handle the cleaning! 
+        .relative.w-full.rounded-lg.overflow-hidden.shadow-lg(class='h-[420px]')
+            img.w-full.h-full.object-cover(src='/assets/images/landing/about-banner.png' alt='Cleaning Service')
+    section.bg-base-200.px-6.py-12
+      .container.mx-auto.text-center
+        h2.h1-service.mb-8 What Our Customers Say
+        .grid(class="grid-cols-1 md:grid-cols-3 gap-6")
+          //- Testimonial 1
+          .card.bg-base-100.shadow-xl.p-8
+            .avatar.flex.justify-center
+              .w-24.h-24.rounded-full.overflow-hidden.mx-auto
+                img(src="/assets/images/landing/reviews-1.jpeg", alt="Sarah L.")
+            p.text-gray-600.mt-4 "Reliable, and spotless! I’ve used their commercial services for my office, and the results are always top-notch. I love their eco-friendly approach!"
+            h3.text-primary.font-bold.mt-4 Sarah L.
+            p.text-gray-500 COO Tech Company
+
+          //- Testimonial 2
+          .card.bg-base-100.shadow-xl.p-8
+            .avatar.flex.justify-center
+              .w-24.h-24.rounded-full.overflow-hidden.mx-auto
+                img(src="/assets/images/landing/reviews-2.jpeg", alt="Lydia Knowles")
+            p.text-gray-600.mt-4
+              span.font-bold Absolutely amazing! 
+              | The team at 3Cleaning Sydney made my home look brand new. They were professional, thorough, and so friendly. Highly recommended!
+            h3.text-primary.font-bold.mt-4 Lydia Knowles
+            p.text-gray-500 Marketing Specialist
+
+          //- Testimonial 3
+          .card.bg-base-100.shadow-xl.p-8
+            .avatar.flex.justify-center
+              .rounded-full.overflow-hidden.mx-auto
+                img(src="/assets/images/landing/reviews-3.jpeg", alt="Emma R." class="w-full h-full  object-cover")
+            p.text-gray-600.mt-4
+              span.font-bold Highly professional! 
+              | Booking was super easy, cleaners showed up right on time. My carpets and home have never looked better. Will definitely book again!
+            h3.text-primary.font-bold.mt-4 Emma R.
+            p.text-gray-500 Business Woman
+    section.container.mx-auto.p-6
+      .grid.grid-cols-2.gap-4.items-center.justify-center
+        .card.shadow-xl.p-4.mx-auto.text-center
+          h2.h1-service.mb-4 Need More Help ?
+           .relative.w-full.rounded-lg.overflow-hidden.shadow-lg.mt-8.mb-8(class='h-[420px]')
+                img.w-full.h-full.object-cover(src='/assets/images/landing/aboutus-detail.png' alt='Cleaning Service')
+          p Couldn’t not find what you were looking for? 
+          p write to us at #[strong 3cleaningsydney@gmail.com]
+        .card.shadow-xl.p-4.mx-auto
+          .card.bg-base-200.w-96.shadow-xl.mb-8
+            .card-body
+              p.h1-service What areas do you service?
+              p 
+              | We provide cleaning services throughout Sydney and surrounding
+              br
+              | suburbs. If you’re unsure whether we cover your location, feel free to
+              br
+              | contact us, and we’ll be happy to assist!
+          .card.bg-base-200.w-96.shadow-xl.mb-8
+            .card-body
+              p.h1-service Do I need to provide cleaning supplies?
+              p 
+              | Not at all! Our team brings all the necessary equipment and eco-
+              br
+              | friendly cleaning products to ensure your space is spotless. If you 
+              br
+              | have specific products you’d like us to use, just let us know.
+          .card.bg-base-200.w-96.shadow-xl.mb-8
+            .card-body
+              p.h1-service How do I book a service?
+              p 
+              | Booking is simple! You can book online through our website, give us
+              br
+              | a call, or send an email. Just choose your preferred service, 
+              br
+              | schedule a time, and we’ll handle the rest
+block pageScripts

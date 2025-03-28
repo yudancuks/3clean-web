@@ -1,0 +1,53 @@
+extends ../../layout
+
+block pageStyles
+    link(rel='stylesheet' href=`${baseUrl}/public/css/texttag.css`)
+
+block content
+    .page-header
+        h3.page-title  #{data ? 'Edit Service' : 'Create New Service'}
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard`) Dashboard
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard/services/list`) Service List
+                li.breadcrumb-item.active(aria-current='page') #{data ? 'Edit Service' : 'Create New Service'}
+    .row
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    form#form-service.form-sample(enctype="multipart/form-data" method="POST")
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-6
+                                        label(for='packageId') Service Unique ID
+                                        input#inputId(type='hidden' name='inputId' value=data ? data._id : '')
+                                        input#packageId.form-control(name='packageId' type='text' placeholder='Service Unique ID..' required value=data ? data.packageId : '')
+                                    .col-sm-6
+                                        label(for='name') Service Name
+                                        input#name.form-control(name='name' type='text' placeholder='Service Name..' required value=data ? data.name : '')
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-6
+                                        label(for='packageType') Detail Packages
+                                        select#packageType.form-control(name="packageType")
+                                            option(value='second', selected=data && data.packageType === 'second') Yes
+                                            option(value='first', selected=data && data.packageType === 'first') No
+                                    .col-sm-6
+                                        label(for='totalPrice') Service Price
+                                        input#totalPrice.form-control(name='totalPrice' type='text' placeholder='Service Price..' required value=data ? data.totalPrice : '')
+
+                                        
+                        .text-right
+                            button.btn.btn-gradient-primary.mr-2(type='submit') Submit
+                            button.btn.btn-light Clear Form
+
+block pageScripts
+    script(src=`${baseUrl}/public/js/forms/form-services.js`)
+
+                                        
+                            
+                        

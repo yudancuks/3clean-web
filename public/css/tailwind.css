@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.h1-hero {
+  font-weight: 500;
+  font-size: 55px;
+  line-height: 65px;
+  letter-spacing: 0;
+}
+
+.h1-hero1 {
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 60px;
+  letter-spacing: 0;
+}
+
+.h2-hero {
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0;
+}
+
+.a-nav {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 34px;
+}
+
+.h1-service {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 42px;
+  letter-spacing: 0;
+}
+
+.h2-service {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0;
+}
+
+.h1-footer {
+  font-weight: 500;
+  font-size: 55px;
+  line-height: 65px;
+  letter-spacing: 0;
+}

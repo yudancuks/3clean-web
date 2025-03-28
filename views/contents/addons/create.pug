@@ -1,0 +1,41 @@
+extends ../../layout
+
+block pageStyles
+    link(rel='stylesheet' href=`${baseUrl}/public/css/texttag.css`)
+
+block content
+    .page-header
+        h3.page-title  #{data ? 'Edit Add-Ons' : 'Create New Add-Ons'}
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard`) Dashboard
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard/addons/list`) Add-Ons List
+                li.breadcrumb-item.active(aria-current='page') #{data ? 'Edit Add-Ons' : 'Create New Add-Ons'}
+    .row
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    form#form-addon.form-sample(enctype="multipart/form-data" method="POST")
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-6
+                                        label(for='name') Add-Ons Name
+                                        input#inputId(type='hidden' name='inputId' value=data ? data._id : '')
+                                        input#name.form-control(name='name' type='text' placeholder='Add-Ons Name..' required value=data ? data.name : '')
+                                    .col-sm-6
+                                        label(for='totalPrice') Total Price
+                                        input#totalPrice.form-control(name='totalPrice' type='text' placeholder='Total Price..' required value=data ? data.totalPrice : '')
+
+                        .text-right
+                            button.btn.btn-gradient-primary.mr-2(type='submit') Submit
+                            button.btn.btn-light Clear Form
+
+block pageScripts
+    script(src=`${baseUrl}/public/js/forms/form-addons.js`)
+
+                                        
+                            
+                        

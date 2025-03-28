@@ -1,0 +1,39 @@
+extends ../../layout
+
+block content
+    .page-header
+        a.btn.btn-gradient-primary.btn-fw(href=`${baseUrl}/promotions/hero-create`) Create Hero Slider 
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard`) Dashboard
+                li.breadcrumb-item.active(aria-current='page') Hero List
+    .row
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    table#productTable.table.table-responsive.table-hover
+                        thead
+                            tr
+                                th TITLE
+                                th SUB TITLE
+                                th TEXT BUTTON
+                                th LINK
+                                th IMAGE
+                                th ACTIONS
+                        tbody
+                            each hero in heroes
+                                tr
+                                    td= hero.title
+                                    td= hero.subtitle
+                                    td= hero.textBtn
+                                    td= hero.linkBtn
+                                    td
+                                        img(src=hero.image alt=hero.title style="width: 200px; height: 140px; border-radius:0")
+                                    td.text-center
+                                        a.btn.btn-primary.btn-sm(href=`/promotions/hero-edit/${hero._id}` title="Edit")
+                                            i.mdi.mdi-grease-pencil 
+                                        a.btn.btn-danger.btn-sm(href=`/promotions/hero-delete/${hero._id}` title="Delete" onclick="return confirm('Are you sure you want to delete this item?')") 
+                                            i.mdi.mdi-delete
+
+

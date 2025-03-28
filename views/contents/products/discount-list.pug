@@ -1,0 +1,37 @@
+extends ../../layout
+
+block content
+    .page-header
+        a.btn.btn-gradient-primary.btn-fw(href=`${baseUrl}/products/discount-create`) Create Discount 
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard`) Dashboard
+                li.breadcrumb-item.active(aria-current='page') Discount List
+    .row
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    table#productTable.table.table-hover
+                        thead
+                            tr
+                                th NAME
+                                th TYPE
+                                th VALUE
+                                th VALID FROM
+                                th EXPIRED
+                                th ACTIONS
+                        tbody
+                            each discount in discounts
+                                tr
+                                    td= discount.name
+                                    td= discount.type
+                                    td= discount.value
+                                    td= discount.validFrom
+                                    td= discount.validUntil
+                                    td.text-center
+                                        a.btn.btn-primary.btn-sm(href=`/products/discount-edit/${discount._id}` title="Edit")
+                                            i.mdi.mdi-grease-pencil 
+                                        a.btn.btn-danger.btn-sm(href=`/products/discount-delete/${discount._id}` title="Delete" onclick="return confirm('Are you sure you want to delete this item?')") 
+                                            i.mdi.mdi-delete
+

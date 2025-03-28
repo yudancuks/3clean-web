@@ -1,0 +1,139 @@
+extends ../../landing
+
+block pageStyles
+
+
+block content
+
+    section.hero-section.container.mx-auto.py-8.px-6.flex.flex-col.mb-8(class='md:py-12')
+        // Efect Blur
+        .absolute.top-10.left-0.w-40.h-40.bg-orange-200.rounded-full.blur-2xl.opacity-80
+        .absolute.right-0.w-40.h-40.bg-blue-200.rounded-full.blur-2xl.opacity-80(class='top-2/3')
+        .flex.items-center.justify-center.text-left.p-10.mb-8(class="h-auto md:h-[420px]")
+          div(class="w-1/2 mx-auto justify-center")
+              p.h1-hero1 
+                  | Your Trusted Cleaning
+                  br
+                  | Partner
+          div(class="w-1/2 mx-auto justify-center")
+              p.h2-service
+                  | At 3cleaning Sydney, we believe a clean space leads to a 
+                  br
+                  | healthier, happier life. Whether it&apos;s your home, office, or 
+                  br
+                  | commercial property, our expert team is here to provide
+                  br
+                  | top-notch cleaning services tailored to your needs.
+        .relative.w-full.rounded-lg.overflow-hidden.shadow-lg(class='h-[420px]')
+            img.w-full.h-full.object-cover(src='/assets/images/landing/about-banner.png' alt='Cleaning Service')
+    section.proclean-section.bg-gray.mx-auto.px-6.py-8.flex.flex-col.mb-8(class='md:py-12')
+        .flex.items-center.text-center.px-10.mb-8
+            div(class="w-1/2 mx-auto")
+              p.text-left.h1-hero1
+                  | Why Choose 
+                  br
+                  | 3cleaning Sydney?
+              .flex.mt-4
+                  i.ri-checkbox-line.h-6.w-6
+                  span  &nbsp; 100% Satisfaction Guarantee
+              .flex.mt-4
+                  i.ri-checkbox-line.h-6.w-6
+                  span  &nbsp; Experienced &amp; Professional Team
+              .flex.mt-4
+                  i.ri-checkbox-line.h-6.w-6
+                  span  &nbsp; Eco-Friendly Cleaning Products
+              .flex.mt-4
+                  i.ri-checkbox-line.h-6.w-6
+                  span  &nbsp; Customized Cleaning Solutions
+              .flex.mt-4
+                  i.ri-checkbox-line.h-6.w-6
+                  span  &nbsp; Reliable &amp; Punctual Service
+              .flex.mt-4
+                  i.ri-checkbox-line.h-6.w-6
+                  span  &nbsp; Transparent Pricing
+              .flex.mt-4
+                  i.ri-checkbox-line.h-6.w-6
+                  span  &nbsp; Advanced Cleaning Equipment
+            div(class="w-1/2 mx-auto justify-center")
+              .relative.w-full.rounded-lg.overflow-hidden.shadow-lg(class='h-[420px]')
+                img.w-full.h-full.object-cover(src='/assets/images/landing/aboutus-detail.png' alt='Cleaning Service')
+        .flex.gap-8.p-10.items-center.justify-center.mt-8(class="mx-auto")
+            .card.bg-base-200.w-64.shadow-xs
+              .card-body.flex.flex-col.justify-center.items-center.text-center.h-full
+                  h1.card-title.text-gray-400 5
+                  p.text-gray-400 Years Experience
+            .card.bg-base-200.w-96.shadow-xs
+              .card-body.flex.flex-col.justify-center.items-center.text-center.h-full
+                  h1.card-title.text-gray-400 100 +
+                  p.text-gray-400 Happy Clients
+            .card.bg-base-200.w-64.shadow-xs
+              .card-body.flex.flex-col.justify-center.items-center.text-center.h-full
+                  h1.card-title.text-gray-400 50 +
+                  p.text-gray-400 Service Options
+    section.bg-base-200.px-6.py-12
+      .container.mx-auto.text-center
+        h2.h1-service.mb-8 What Our Customers Say
+        .grid(class="grid-cols-1 md:grid-cols-3 gap-6")
+          //- Testimonial 1
+          .card.bg-base-100.shadow-xl.p-8
+            .avatar.flex.justify-center
+              .w-24.h-24.rounded-full.overflow-hidden.mx-auto
+                img(src="/assets/images/landing/reviews-1.jpeg", alt="Sarah L.")
+            p.text-gray-600.mt-4 "Reliable, and spotless! I’ve used their commercial services for my office, and the results are always top-notch. I love their eco-friendly approach!"
+            h3.text-primary.font-bold.mt-4 Sarah L.
+            p.text-gray-500 COO Tech Company
+
+          //- Testimonial 2
+          .card.bg-base-100.shadow-xl.p-8
+            .avatar.flex.justify-center
+              .w-24.h-24.rounded-full.overflow-hidden.mx-auto
+                img(src="/assets/images/landing/reviews-2.jpeg", alt="Lydia Knowles")
+            p.text-gray-600.mt-4
+              span.font-bold Absolutely amazing! 
+              | The team at 3Cleaning Sydney made my home look brand new. They were professional, thorough, and so friendly. Highly recommended!
+            h3.text-primary.font-bold.mt-4 Lydia Knowles
+            p.text-gray-500 Marketing Specialist
+
+          //- Testimonial 3
+          .card.bg-base-100.shadow-xl.p-8
+            .avatar.flex.justify-center
+              .rounded-full.overflow-hidden.mx-auto
+                img(src="/assets/images/landing/reviews-3.jpeg", alt="Emma R." class="w-full h-full  object-cover")
+            p.text-gray-600.mt-4
+              span.font-bold Highly professional! 
+              | Booking was super easy, cleaners showed up right on time. My carpets and home have never looked better. Will definitely book again!
+            h3.text-primary.font-bold.mt-4 Emma R.
+            p.text-gray-500 Business Woman
+    section.container.mx-auto.px-6.py-12.text-center.overflow-hidden(class='max-h-[570px]')
+      // Subtitle
+      p.text-primary.uppercase.tracking-wide.mb-2 Common Questions
+      // Title
+      h2.h1-service.mb-8 Still confused about our services?
+      // FAQ Cards
+      .mt-24.grid.grid-cols-1.gap-6(class='md:grid-cols-2')
+        // Card 1
+        .bg-base-100.shadow-md.rounded-xl.p-8.text-left.border.border-gray
+          h3.font-semibold.text-lg How do I know which cleaning service is right for me?
+          p.mt-2
+            | If you&apos;re unsure which service best fits your needs, don&rsquo;t worry! Simply tell us about
+            | your space, cleaning requirements, and any specific concerns, and our team will recommend
+            | the most suitable service for you. You can also contact us for a free consultation.
+        // Card 2
+        .bg-base-100.shadow-md.rounded-xl.p-8.text-left.border.border-gray
+          h3.font-semibold.text-lg Can I customize the cleaning service to fit my needs?
+          p.mt-2
+            | Absolutely! We offer flexible cleaning plans that can be tailored to your preferences.
+            | Whether you need specific areas cleaned, special requests, or eco-friendly products, just
+            | let us know, and we'll accommodate your needs. 
+      // Navigation Buttons
+      .flex.justify-end.items-end.mt-8.space-x-6
+        a.btn.btn-primary.flex.items-center.gap-2.px-4.py-2.mx-auto(
+          href="https://wa.me/6281234567890", 
+          target="_blank"
+        )
+          i.ri-whatsapp-line
+          span Chat Admin on WhatsApp
+
+
+
+block pageScripts

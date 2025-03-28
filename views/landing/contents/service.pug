@@ -1,0 +1,234 @@
+extends ../../landing
+
+block pageStyles
+
+
+block content
+
+    section.hero-section.container.mx-auto.py-8.px-6.flex.flex-col.mb-4(class='md:py-12')
+        // Efect Blur
+        .absolute.top-10.left-0.w-40.h-40.bg-orange-200.rounded-full.blur-2xl.opacity-80
+        .absolute.right-0.w-40.h-40.bg-blue-200.rounded-full.blur-2xl.opacity-80(class='top-2/3')
+        .flex.items-center.justify-center.text-left.p-10.mb-8(class="h-auto md:h-[420px]")
+          div(class="w-1/2 mx-auto justify-center")
+              p.h1-hero1 
+                  | A clean workplace is a
+                  br
+                  | productive workplace.
+          div(class="w-1/2 mx-auto justify-center")
+              p.h2-service
+                  | Let us handle your office or commercial space with meticulous
+                  br
+                  | care. From small offices to large facilities, we deliver results that
+                  br
+                  | leave a lasting impression. Our professional team ensures a spotless,
+                  br
+                  | sanitized, and well-maintained environment.
+    section.service-section.container.mx-auto.flex.flex-col.mb-8
+        #service-container.mt-4.grid(class="grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full")
+            .card.bg-base-100.rounded-xl.text-left.px-4
+                figure.w-full(class='h-[350px]')
+                    img.rounded-xl.w-full.h-full.object-cover(src='/assets/images/landing/house-cleaning.png' alt='house cleaning')
+                .card-body.items-center.text-center
+                    p.text-lg House Cleaning
+            .card.bg-base-100.rounded-xl.text-left.px-4
+                figure.w-full(class='h-[350px]')
+                    img.rounded-xl.w-full.h-full.object-cover(src='/assets/images/landing/deep-cleaning.png' alt='deep cleaning')
+                .card-body.items-center.text-center
+                    p.text-lg Deep Cleaning
+            .card.bg-base-100.rounded-xl.text-left.px-4
+                figure.w-full(class='h-[350px]')
+                    img.rounded-xl.w-full.h-full.object-cover(src='/assets/images/landing/end-of-cleaning.png' alt='end of ease cleaning')
+                .card-body.items-center.text-center
+                    p.text-lg End of Ease Cleaning
+            .card.bg-base-100.rounded-xl.text-left.px-4
+                figure.w-full(class='h-[350px]')
+                    img.rounded-xl.w-full.h-full.object-cover(src='/assets/images/landing/regular-cleaning.png' alt='regular cleaning')
+                .card-body.items-center.text-center
+                    p.text-lg Regular Cleaning
+            .card.bg-base-100.rounded-xl.text-left.px-4
+                figure.w-full(class='h-[350px]')
+                    img.rounded-xl.w-full.h-full.object-cover(src='/assets/images/landing/carpet-cleaning.png' alt='regular cleaning')
+                .card-body.items-center.text-center
+                    p.text-lg Carpet Cleaning
+            .card.bg-base-100.rounded-xl.text-left.px-4
+                figure.w-full(class='h-[350px]')
+                    img.rounded-xl.w-full.h-full.object-cover(src='/assets/images/landing/mattres-cleaning.png' alt='mattress cleaning')
+                .card-body.items-center.text-center
+                    p.text-lg Mattress Cleaning
+            .card.bg-base-100.rounded-xl.text-left.px-4
+                figure.w-full(class='h-[350px]')
+                    img.rounded-xl.w-full.h-full.object-cover(src='/assets/images/landing/rug-cleaning.png' alt='rug cleaning')
+                .card-body.items-center.text-center
+                    p.text-lg Rug Cleaning
+            .card.bg-base-100.rounded-xl.text-left.px-4
+                figure.w-full(class='h-[350px]')
+                    img.rounded-xl.w-full.h-full.object-cover(src='/assets/images/landing/upholstry-cleaning.png' alt='upholestry cleaning')
+                .card-body.items-center.text-center
+                    p.text-lg Upholstеry Cleaning
+    section.container.mx-auto.text-center.py-12.px-6
+        // Title
+        h2.text-3xl.font-bold.mb-4 Why Choose Us?
+        p.text-gray-500.max-w-2xl.mx-auto.mb-8
+            | At 3cleaning Sydney, we believe a clean space leads to a better life. Here&rsquo;s why our clients
+            | trust us for their cleaning needs:
+        // Card Grid
+        .grid.grid-cols-1.gap-6(class='md:grid-cols-2')
+            // Card 1
+            .card.bg-base-100.shadow-lg.flex.flex-row.items-center.p-4
+                figure(class='w-1/3')
+                    img.rounded-lg(src='/assets/images/landing/service-1.png' alt='Team')
+                .card-body(class='w-2/3')
+                    h3.text-lg.font-bold Professional and Experienced Team
+                    p.text-gray-500.text-sm
+                    | Our cleaners are highly trained, experienced, and committed to delivering exceptional
+                    | results. Your satisfaction is our priority.
+            // Card 2
+            .card.bg-base-100.shadow-lg.flex.flex-row.items-center.p-4
+                figure(class='w-1/3')
+                    img.rounded-lg(src='/assets/images/landing/service-2.png' alt='Flexible Services')
+                .card-body(class='w-2/3')
+                    h3.text-lg.font-bold Flexible and Tailored Services
+                    p.text-gray-500.text-sm
+                    | No two spaces are the same. We provide customizable cleaning packages to suit your
+                    | specific needs, schedule, and budget.
+            // Card 3
+            .card.bg-base-100.shadow-lg.flex.flex-row.items-center.p-4
+                figure(class='w-1/3')
+                    img.rounded-lg(src='/assets/images/landing/service-3.png' alt='On-Time Service')
+                .card-body(class='w-2/3')
+                    h3.text-lg.font-bold Reliable and On-Time Service
+                    p.text-gray-500.text-sm
+                    | We value your time and always strive to arrive promptly and complete the job efficiently
+                    | without compromising quality.
+            // Card 4
+            .card.bg-base-100.shadow-lg.flex.flex-row.items-center.p-4
+                figure(class='w-1/3')
+                    img.rounded-lg(src='/assets/images/landing/service-4.png' alt='Satisfaction Guarantee')
+                .card-body(class='w-2/3')
+                    h3.text-lg.font-bold It&rsquo;s a Satisfaction Guarantee
+                    p.text-gray-500.text-sm
+                    | We don&rsquo;t just clean; we create spaces that shine. If you&rsquo;re not 100% satisfied, we&rsquo;ll
+                    | make it right.
+    section.gallery-section.bg-100.container.mx-auto.px-6.py-8.flex.flex-col(class='md:py-12')
+        .w-full.grid.grid-cols-1.gap-6.items-start(class='lg:grid-cols-3')
+            // Left Column 2/3
+            .space-y-4.flex.flex-col.justify-start.items-start(class='lg:col-span-2')
+                p.text-left.h1-service
+                    | Take a Look at The Remarkable Difference
+                    br
+                    |           Our Professional Cleaning
+        .divider
+        .carousel.carousel-center.bg-100.rounded-box.space-x-4.p-4
+            .carousel-item
+                .card.bg-base-100.max-w-md.shadow-xs(class='h-[365px]')
+                    // Wrapper gambar dengan tinggi 2/3 dari card
+                    .grid.grid-cols-2.relative(class='h-2/3')
+                        figure.relative.w-full.h-full
+                            img.w-full.h-full.object-cover(src='/assets/images/landing/before1.png' alt='Before')
+                            span.absolute.bottom-2.left-2.bg-base-200.text-black.text-xs.px-2.py-1.rounded-full
+                                | Before
+                        figure.relative.w-full.h-full
+                            img.w-full.h-full.object-cover(src='/assets/images/landing/after1.png' alt='After')
+                            span.absolute.bottom-2.right-2.bg-primary.text-white.text-xs.px-2.py-1.rounded-full
+                                | After
+                        // Body card
+                    .p-3.card-body.flex.flex-col.justify-start(class='h-1/3')
+                        p 1 Day ago
+                        h2.card-title Beautiful House in Sydney
+                        .card-actions.justify-start
+                            .badge.rounded.bg-gray-100 House Cleaning
+                            .badge.rounded.bg-gray-100 Home Service
+            .carousel-item
+                .card.bg-base-100.max-w-md.shadow-xs(class='h-[365px]')
+                    // Wrapper gambar dengan tinggi 2/3 dari card
+                    .grid.grid-cols-2.relative(class='h-2/3')
+                        figure.relative.w-full.h-full
+                            img.w-full.h-full.object-cover(src='/assets/images/landing/before2.png' alt='Before')
+                            span.absolute.bottom-2.left-2.bg-base-200.text-black.text-xs.px-2.py-1.rounded-full
+                                | Before
+                        figure.relative.w-full.h-full
+                            img.w-full.h-full.object-cover(src='/assets/images/landing/after2.png' alt='After')
+                            span.absolute.bottom-2.right-2.bg-primary.text-white.text-xs.px-2.py-1.rounded-full
+                                | After
+                        // Body card
+                    .p-3.card-body.flex.flex-col.justify-start(class='h-1/3')
+                        p 1 Day ago
+                        h2.card-title Beautiful House in Sydney
+                        .card-actions.justify-start
+                            .badge.rounded.bg-gray-100 House Cleaning
+                            .badge.rounded.bg-gray-100 Home Service
+            .carousel-item
+                .card.bg-base-100.max-w-md.shadow-xs(class='h-[365px]')
+                    // Wrapper gambar dengan tinggi 2/3 dari card
+                    .grid.grid-cols-2.relative(class='h-2/3')
+                        figure.relative.w-full.h-full
+                            img.w-full.h-full.object-cover(src='/assets/images/landing/before3.png' alt='Before')
+                            span.absolute.bottom-2.left-2.bg-base-200.text-black.text-xs.px-2.py-1.rounded-full
+                                | Before
+                        figure.relative.w-full.h-full
+                            img.w-full.h-full.object-cover(src='/assets/images/landing/after3.png' alt='After')
+                            span.absolute.bottom-2.right-2.bg-primary.text-white.text-xs.px-2.py-1.rounded-full
+                                | After
+                        // Body card
+                    .p-3.card-body.flex.flex-col.justify-start(class='h-1/3')
+                        p 1 Day ago
+                        h2.card-title Beautiful House in Sydney
+                        .card-actions.justify-start
+                            .badge.rounded.bg-gray-100 House Cleaning
+                            .badge.rounded.bg-gray-100 Home Service
+    section.bg-base-200.px-6.py-12
+      .container.mx-auto.text-center
+        h2.h1-service.mb-8 What Our Customers Say
+        .grid(class="grid-cols-1 md:grid-cols-3 gap-6")
+          //- Testimonial 1
+          .card.bg-base-100.shadow-xl.p-8
+            .avatar.flex.justify-center
+              .w-24.h-24.rounded-full.overflow-hidden.mx-auto
+                img(src="/assets/images/landing/reviews-1.jpeg", alt="Sarah L.")
+            p.text-gray-600.mt-4 "Reliable, and spotless! I’ve used their commercial services for my office, and the results are always top-notch. I love their eco-friendly approach!"
+            h3.text-primary.font-bold.mt-4 Sarah L.
+            p.text-gray-500 COO Tech Company
+
+          //- Testimonial 2
+          .card.bg-base-100.shadow-xl.p-8
+            .avatar.flex.justify-center
+              .w-24.h-24.rounded-full.overflow-hidden.mx-auto
+                img(src="/assets/images/landing/reviews-2.jpeg", alt="Lydia Knowles")
+            p.text-gray-600.mt-4
+              span.font-bold Absolutely amazing! 
+              | The team at 3Cleaning Sydney made my home look brand new. They were professional, thorough, and so friendly. Highly recommended!
+            h3.text-primary.font-bold.mt-4 Lydia Knowles
+            p.text-gray-500 Marketing Specialist
+
+          //- Testimonial 3
+          .card.bg-base-100.shadow-xl.p-8
+            .avatar.flex.justify-center
+              .rounded-full.overflow-hidden.mx-auto
+                img(src="/assets/images/landing/reviews-3.jpeg", alt="Emma R." class="w-full h-full  object-cover")
+            p.text-gray-600.mt-4
+              span.font-bold Highly professional! 
+              | Booking was super easy, cleaners showed up right on time. My carpets and home have never looked better. Will definitely book again!
+            h3.text-primary.font-bold.mt-4 Emma R.
+            p.text-gray-500 Business Woman
+    section.container.mx-auto.text-center.p-8
+        h2.h1-service.mb-8 Our Simple 3-Step Process
+        div(class="flex flex-col md:flex-row items-center justify-center gap-8 mx-auto mt-8" style="min-height:250px")
+            .step.flex.flex-col.items-center.text-center
+                div(class="w-12 h-12 flex items-center justify-center rounded-full border-2 border-blue2-200 text-blue-200 font-bold text-lg leading-none flex-shrink-0")
+                    span &nbsp;&nbsp;&nbsp;1
+                h3.font-bold.text-lg.mt-4 Choose Your Service
+                p.text-gray-500 Browse our range of cleaning services and select the one that suits your needs.
+            .step.flex.flex-col.items-center.text-center
+                div(class="w-12 h-12 flex items-center justify-center rounded-full border-2 border-blue-500 text-blue-500 font-bold text-lg leading-none flex-shrink-0")
+                    span &nbsp;&nbsp;&nbsp;2
+                h3.font-bold.text-lg.mt-4 Make Your Payment
+                p.text-gray-500 Easily secure your booking through our hassle-free payment system.
+            .step.flex.flex-col.items-center.text-center
+                div(class="w-12 h-12 flex items-center justify-center rounded-full border-2 border-blue-500 text-blue-500 font-bold text-lg leading-none flex-shrink-0")
+                    span &nbsp;&nbsp;&nbsp;3
+                h3.font-bold.text-lg.mt-4 Sit Back and Relax
+                p.text-gray-500 Once you’ve booked, leave the rest to us! Our professional cleaners will arrive on time and handle the job efficiently.
+
+
+block pageScripts

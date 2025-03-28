@@ -1,0 +1,57 @@
+extends ../../layout
+
+block pageStyles
+  link(rel='stylesheet' href=`${baseUrl}/public/css/tableformat.css`)
+
+block content
+    .page-header
+        a.btn.btn-gradient-primary.btn-fw(href=`${baseUrl}/products/product-create`) Create Product
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard`) Dashboard
+                li.breadcrumb-item.active(aria-current='page') Prodcuct List
+    .row
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    table#tableProduct.table.table-hover.table-responsive
+                        thead
+                            tr
+                                th CODE
+                                th NAME
+                                th BRAND
+                                th MANUFACTURE
+                                th DESCRIPTION
+                                th PRICE
+                                th PRICE DISCOUNT
+                                th ACTIONS
+                        tbody
+                            each product in products
+                                tr
+                                    td= product.identityNumber
+                                    td= product.name
+                                    td= product.brand
+                                    td= product.manufacture
+                                    td= product.description
+                                    td= product.price
+                                    td= product.finalPrice
+                                    td.text-center
+                                        a.btn.btn-primary.btn-sm(href=`/products/product-edit/${product.slug}` title="Edit")
+                                            i.mdi.mdi-grease-pencil 
+                                        a.btn.btn-danger.btn-sm(href=`/products/product-delete/${product._id}` title="Delete" onclick="return confirm('Are you sure you want to delete this item?')") 
+                                            i.mdi.mdi-delete
+block pageScripts
+    script.
+        $(document).ready(function() {
+            $('#tableProduct').DataTable({
+                //- responsive: true,
+                columnDefs: [
+                    {
+                        targets: 4,
+                        width: '300px',
+                    },
+                ],
+                autoWidth: false, // Ensure autoWidth is disabled
+            });
+        });

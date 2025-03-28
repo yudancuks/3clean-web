@@ -1,0 +1,73 @@
+extends ../../layout
+
+block content
+    .page-header
+        h3.page-title  #{promotion ? 'Edit Hero Slider' : 'Create New Hero Slider'}
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard`) Dashboard
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/promotions/hero-list`) Hero Slider List
+                li.breadcrumb-item.active(aria-current='page') #{promotion ? 'Edit Hero Slider' : 'Create Hero Slider'}
+    .row
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    form#form-hero.form-sample
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='title') Title
+                                        input#heroId(type='hidden' name='heroId' value=promotion ? promotion._id : '')
+                                        input#title.form-control(name='title' type='text' placeholder='Slider Title...' required value=promotion ? promotion.title : '')
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='subtitle') Sub Title
+                                        input#subtitle.form-control(name='subtitle' type='text' placeholder='Promotion Subtitle...' required value=promotion ? promotion.subtitle : '')
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='textBtn') Text Button
+                                        input#textBtn.form-control(name='textBtn' type='text' placeholder='Text Button...' required value=promotion ? promotion.textBtn : '')
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='linkBtn') Link Button
+                                        input#linkBtn.form-control(name='linkBtn' type='text' placeholder='Link Button...' required value=promotion ? promotion.linkBtn : '')
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='active') Show Landing Pages
+                                        select#active.form-control(name="active")
+                                            option(value='true') Yes
+                                            option(value='false') No
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='image') Image
+                                        input#image.form-control(type='file' accept='image/*' name="image")
+                            .col-md-6
+                                .form-group.row
+                                   .col-sm-12
+                                        .preview
+                                            img#imagePreview.img-fluid(
+                                                src=promotion && promotion.image ? promotion.image : '#',
+                                                alt='Image Preview',
+                                                style=promotion && promotion.image ? 'display: block;' : 'display: none;'
+                                                )
+
+                                        
+                        .text-right
+                            button.btn.btn-gradient-primary.mr-2(type='submit') Submit
+                            button.btn.btn-light Clear Form
+
+                                        
+                            
+block pageScripts
+    script(src=`${baseUrl}/public/js/forms/hero-post.js`)      

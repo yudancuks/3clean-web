@@ -1,0 +1,53 @@
+extends ../../layout
+
+block content
+    .page-header
+        h3.page-title  #{user ? 'Edit Admin' : 'Create New Admin'}
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard`) Dashboard
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/peoples/admin-list`) List Admin
+                li.breadcrumb-item.active(aria-current='page') #{user ? 'Edit Admin' : 'Create New Admin'}
+    .row
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    form#form-admin.form-sample(method="POST" enctype="multipart/form-data")
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='userName') Fullname
+                                        input#adminId(type='hidden' name='adminId' value=user ? user._id : '')
+                                        input#fullName.form-control(name='fullName' type='text' placeholder='Fullname...' required value=user ? user.fullName : '')
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-12
+                                          label(for='emailAddress') Email Address
+                                          input#emailAddress.form-control(name='emailAddress' type='email' placeholder='Email Address...' required value=user ? user.emailAddress : '')
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='password') Password
+                                        input#password.form-control(name='password' type='password' placeholder='********')
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='repassword') Retype Password
+                                        input#repassword.form-control(name='repassword' type='password' placeholder='********')
+
+                                        
+                        .text-right
+                            button.btn.btn-gradient-primary.mr-2(type='submit') Submit
+                            button.btn.btn-light Clear Form
+
+block pageScripts
+    script(src=`${baseUrl}/public/js/forms/admin-post.js`) 
+
+                                        
+                            
+                        

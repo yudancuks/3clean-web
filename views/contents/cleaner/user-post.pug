@@ -1,0 +1,63 @@
+extends ../../layout
+
+block content
+    .page-header
+        h3.page-title  #{user ? 'Edit Cleaner' : 'Create New Cleaner'}
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard`) Dashboard
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/peoples/cleaner-list`) List Cleaner
+                li.breadcrumb-item.active(aria-current='page') #{user ? 'Edit Cleaner' : 'Create New Cleaner'}
+    .row
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    form#form-cleaner.form-sample(method="POST" enctype="multipart/form-data")
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-6
+                                        label(for='firstname') Firstname
+                                        input#adminId(type='hidden' name='adminId' value=user ? user._id : '')
+                                        input#firstname.form-control(name='firstname' type='text' placeholder='Firstname...' required value=user ? user.firstname : '')
+                                    .col-sm-6
+                                        label(for='lastname') Lastname
+                                        input#lastname.form-control(name='lastname' type='text' placeholder='Lastname...' required value=user ? user.lastname : '')
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-6
+                                          label(for='email') Email Address
+                                          input#email.form-control(name='email' type='email' placeholder='Email Address...' required value=user ? user.email : '')
+                                    .col-sm-6
+                                          label(for='phone') Phone Number
+                                          input#phone.form-control(name='phone' type='text' placeholder='Phone Number...' required value=user ? user.phone : '')
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-6
+                                        label(for='dob') Date of Birth
+                                        input#dob.form-control(name='dob' type='date' placeholder='Birth Date...' required value=user ? user.dob : '')
+                                    .col-sm-6
+                                        label(for='hiredDate') Date of Joined
+                                        input#hiredDate.form-control(name='hiredDate' type='date' placeholder='Date Joined...' value=user ? user.hiredDate : '')
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-12 
+                                        label(for='address') Detail Address
+                                        textarea#address.textarea.textarea-bordered.form-control(name="address" placeholder='Address..' required value=user ? user.address : '')
+                                             =user ? user.address : ''
+                                        
+                        .text-right
+                            button.btn.btn-gradient-primary.mr-2(type='submit') Submit
+                            button.btn.btn-light Clear Form
+
+block pageScripts
+    script(src=`${baseUrl}/public/js/forms/form-cleaner.js`) 
+
+                                        
+                            
+                        

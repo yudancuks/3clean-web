@@ -1,0 +1,105 @@
+extends ../../layout
+
+block pageStyles
+    link(rel='stylesheet' href=`${baseUrl}/public/css/texttag.css`)
+
+block content
+    .page-header
+        h3.page-title  #{vsight ? 'Edit Vsight Post' : 'Create New Vsight Post'}
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard`) Dashboard
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/blogs/post-list`) Vsight List
+                li.breadcrumb-item.active(aria-current='page') #{vsight ? 'Edit Vsight' : 'Create New Vsight'}
+    .row
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    form#form-blog.form-sample(enctype="multipart/form-data" method="POST")
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='title') Title
+                                        input#postId(type='hidden' name='postId' value=vsight ? vsight._id : '')
+                                        input#title.form-control(name='title' type='text' placeholder='Promotion Title...' required value=vsight ? vsight.title : '')
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='active') Show Landing Pages
+                                        select#active.form-control(name="active")
+                                            option(value='true', selected=vsight && vsight.active === true) Yes
+                                            option(value='false', selected=vsight && vsight.active === false) No
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='favourite') Favourite
+                                        select#favourite.form-control(name="favourite" required)
+                                            option(value='true', selected=vsight && vsight.favourite === true) Yes
+                                            option(value='false', selected=vsight && vsight.favourite === false) No
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-12
+                                          label(for='category') Category Post [separated by comas]
+                                          #tagContainer.tag-input(onclick="document.getElementById('tagInput')")
+                                            input#tagInput.form-control(
+                                                type='text' 
+                                                placeholder='Type here and press space...' 
+                                            )
+                                          input#products(type='hidden' name='category' value='')
+                        .row
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-12
+                                          label(for='body') Text Body
+                                          textarea#bodyPost.form-control(rows='6' name='bodyPost' required)=vsight ? vsight.body : ''
+                        
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    .col-sm-12
+                                        label(for='image') Image
+                                        input#image.form-control(type='file' accept='image/*' name="image")
+                            .col-md-6
+                                .form-group.row
+                                   .col-sm-12
+                                        .preview
+                                            img#imagePreview.img-fluid(
+                                                src=vsight && vsight.image ? vsight.image : '#',
+                                                alt='Image Preview',
+                                                style=vsight && vsight.image ? 'display: block;' : 'display: none;'
+                                                )
+
+                                        
+                        .text-right
+                            button.btn.btn-gradient-primary.mr-2(type='submit') Submit
+                            button.btn.btn-light Clear Form
+
+block pageScripts
+    script(src=`${baseUrl}/public/js/forms/blog-post.js`)
+    script(src=`${baseUrl}/public/vendors/tinymce/tinymce.min.js` referrerpolicy='origin')
+    script.
+      tinymce.init({
+        selector: '#bodyPost',
+        plugins: 'link image table lists',
+        toolbar: 'undo redo | bold italic | bullist numlist | link image | alignleft aligncenter alignright alignjustify | table',
+        height: 500,
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save(); // Sync content to the hidden textarea
+            });
+        },
+      });
+    script(src=`${baseUrl}/public/js/texttag.js`)
+    script.
+        const cat = !{JSON.stringify(vsightCat) || null};
+        const existingCat = cat || '[]'; // Get products from data attribute
+        populateTags(existingCat);
+
+                                        
+                            
+                        
