@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             serviceElement.classList.add("flex", "justify-between");
 
             serviceElement.innerHTML = `
-                <span class="font-semibold">${service.addonsName}</span>
+                <span class="font-semibold">${service.name}</span>
                 <span>${service.price.toLocaleString('en-AU', { style: 'currency', currency: 'AUD' })}</span>
             `;
 
