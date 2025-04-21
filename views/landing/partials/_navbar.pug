@@ -3,8 +3,9 @@ nav.bg-white.shadow-sm.sticky.top-0.z-50
     // Logo
     div
       img(src="/assets/images/landing/logo.svg" alt="Logo")
-    // Navigation Links
-    ul.hidden.space-x-6.text-gray-700.font-medium(class='md:flex')
+
+    // Navigation Links (Desktop)
+    ul(class="hidden md:flex space-x-6 text-gray-700 font-medium")
       li
         a.a-nav(href='/' class='hover:text-blue-500') Home
       li
@@ -15,19 +16,34 @@ nav.bg-white.shadow-sm.sticky.top-0.z-50
         a.a-nav(href='/about-us' class='hover:text-blue-500') About Us
       li
         a.a-nav(href='/reviews' class='hover:text-blue-500') Reviews
-    // Right Buttons
-    .hidden.space-x-4(class='md:flex')
-      button.px-6.py-2.btn.btn-outline.btn-primary.rounded-full Sign In
-      a.px-6.py-2.btn.btn-primary.rounded-full.text-white(href="/book-now") Book Now
+
+    // Right Buttons (Desktop)
+    .hidden(class="md:flex space-x-4")
+      button(class="px-6 py-2 btn btn-outline btn-primary rounded-full") Sign In
+      a(href="/book-now" class="px-6 py-2 btn btn-primary rounded-full text-white") Book Now
+
     // Mobile Menu Button
-    button.text-gray-700(@click='toggleMenu' class='md:hidden focus:outline-none')
-      svg.w-6.h-6(fill='none' stroke='currentColor' stroke-width='2' viewbox='0 0 24 24')
-        path(stroke-linecap='round' stroke-linejoin='round' d='M4 6h16M4 12h16M4 18h16')
-  // Mobile Menu
-  .bg-white.border-t.border-gray-200.p-4.space-y-4(v-if='isOpen' class='md:hidden')
-    a.block.text-gray-700(href='#') Home
-    a.block.text-gray-700(href='#') Services
-    a.block.text-gray-700(href='#') About
-    a.block.text-gray-700(href='#') Contact
-    button.w-full.px-4.py-2.btn.btn-outline.btn-primary Sign In
-    a.w-full.px-4.py-2.btn.btn-primary.text-white(href="/book-now") Book Now
+    button#mobile-menu-button(class="text-gray-700 md:hidden focus:outline-none")
+      svg(class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24")
+        path(stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16")
+
+  // Mobile Menu (Toggle with JS)
+  .hidden#mobile-menu(class="md:hidden bg-white border-t border-gray-200 p-4 space-y-4")
+    a(href="/" class="block text-gray-700") Home
+    a(href="/services" class="block text-gray-700") Services
+    a(href="/about-us" class="block text-gray-700") About
+    a(href="/contact" class="block text-gray-700") Contact
+    button(class="w-full px-4 py-2 btn btn-outline btn-primary") Sign In
+    a(href="/book-now" class="w-full px-4 py-2 btn btn-primary text-white") Book Now
+
+script.
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    toggleBtn.addEventListener('click', function () {
+      mobileMenu.classList.toggle('hidden');
+    });
+  });
+
+
