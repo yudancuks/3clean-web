@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form-login');
-    const API_URL = 'http://3cleaningsydney.com:3000/api';
+    const API_URL = 'https://3cleaningsydney.com:3000/api';
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();

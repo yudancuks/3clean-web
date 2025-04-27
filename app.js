@@ -60,10 +60,10 @@ app.use((req, res) => {
 // Start the server
 const PORT = process.env.PORT || 9000;
 
-app.locals.baseUrl = `http://3cleaningsydney.com:${PORT}`; // Your base URL here
+app.locals.baseUrl = `https://3cleaningsydney.com:${PORT}`; // Your base URL here
 
 app.listen(PORT, () => {
-    console.log(`Frontend running at http://3cleaningsydney.com:${PORT}`);
+    console.log(`Frontend running at https://3cleaningsydney.com:${PORT}`);
 });
 
 // Get the local IP address dynamically
