@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log('JavaScript Loaded!');
-  const API_URL = 'http://localhost:3000/api';
+  const API_URL = 'http://3cleaningsydney.com:3000/api';
   let totalPrice = 0;
   let gstPrice = 0;
 
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
           document.getElementById("servicenametext").innerHTML = event.target.value;
 
           try {
-              const response = await fetch(`http://localhost:3000/api/packages/detail/all?packageName=${event.target.value}`);
+              const response = await fetch(`http://3cleaningsydney.com:3000/api/packages/detail/all?packageName=${event.target.value}`);
               const data = await response.json();
               console.log('Fetched Data:', data);
               updateSelectOptions(data);
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     packageElement.addEventListener("change", async function (event) {
         const selectedValue = event.target.value;
         try {
-            const response = await fetch(`http://localhost:3000/api/packages/detail/${selectedValue}`);
+            const response = await fetch(`http://3cleaningsydney.com:3000/api/packages/detail/${selectedValue}`);
             const data = await response.json();
             document.getElementById("packagenametext").innerHTML = data.name;
             document.getElementById("totalpricetext").innerHTML = data.totalPrice.toLocaleString('en-AU', { style: 'currency', currency: 'AUD' });
