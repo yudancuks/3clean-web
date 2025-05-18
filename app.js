@@ -60,21 +60,9 @@ app.use((req, res) => {
 // Start the server
 const PORT = process.env.PORT || 9000;
 
-app.locals.baseUrl = `https://3cleaningsydney.com:${PORT}`; // Your base URL here
+app.locals.baseUrl = `http://3cleaningsydney.com:${PORT}`; // Your base URL here
 
 app.listen(PORT, () => {
-    console.log(`Frontend running at https://3cleaningsydney.com:${PORT}`);
+    console.log(`Frontend running at ${app.locals.baseUrl}`);
 });
 
-// Get the local IP address dynamically
-// const os = require('os');
-// const networkInterfaces = os.networkInterfaces();
-// const localIP = Object.values(networkInterfaces)
-//   .flat()
-//   .find((iface) => iface.family === 'IPv4' && !iface.internal).address;
-
-// app.locals.baseUrl = `http://${localIP}:${PORT}`;
-
-// app.listen(PORT, '0.0.0.0', () => {
-//     console.log(`Frontend running at http://${localIP}:${PORT}`);
-// });

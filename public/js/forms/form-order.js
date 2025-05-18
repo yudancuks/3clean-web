@@ -4,28 +4,25 @@ document.addEventListener('DOMContentLoaded', () => {
   let totalPrice = 0;
   let gstPrice = 0;
 
-  const radios = document.querySelectorAll('input[name="serviceCleaning"]');
-  console.log('Radio buttons found:', radios.length); // Debugging
 
-  if (radios.length === 0) {
-      console.warn('Radio buttons not found! Make sure they are present in HTML.');
-  }
+  const serviceSelect = document.getElementById('serviceId');
 
-  radios.forEach(radio => {
-      radio.addEventListener('change', async (event) => {
-          //console.log('Radio clicked!', event.target.value);
-          document.getElementById("servicenametext").innerHTML = event.target.value;
+if (serviceSelect) {
+  serviceSelect.addEventListener('change', async (event) => {
+    const selectedName = event.target.value;
 
-          try {
-              const response = await fetch(`https://3cleaningsydney.com:3000/api/packages/detail/all?packageName=${event.target.value}`);
-              const data = await response.json();
-              console.log('Fetched Data:', data);
-              updateSelectOptions(data);
-          } catch (error) {
-              console.error('Error fetching data:', error);
-          }
-      });
+    try {
+      const response = await fetch(`http://3cleaningsydney.com:3000/api/packages/detail/all?packageName=${encodeURIComponent(selectedName)}`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const data = await response.json();
+      console.log('Fetched Data:', data);
+      updateSelectOptions(data); // This should be your own function
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   });
+}
 
   function updateSelectOptions(data) {
     const selectElement = document.getElementById('pkgname'); // Ganti dengan ID select yang sesuai
@@ -46,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     packageElement.addEventListener("change", async function (event) {
         const selectedValue = event.target.value;
         try {
-            const response = await fetch(`https://3cleaningsydney.com:3000/api/packages/detail/${selectedValue}`);
+            const response = await fetch(`http://3cleaningsydney.com:3000/api/packages/detail/${selectedValue}`);
             const data = await response.json();
             document.getElementById("packagenametext").innerHTML = data.name;
             document.getElementById("totalpricetext").innerHTML = data.totalPrice.toLocaleString('en-AU', { style: 'currency', currency: 'AUD' });
@@ -59,62 +56,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const homeElement = document.getElementById("homesize");
-    
-    homeElement.addEventListener("change", async function (event) {
-        const selectedValue = event.target.value;
-        document.getElementById("homesizetext").innerHTML = selectedValue;
-    
-    });
-    let selectedServices = [];
-    function updateSelectedServices(checkbox) {
+let selectedServices = [];
+
+function updateSelectedServicesFromSelect(selectElement) {
+    selectedServices = []; // Reset on each change
+
+    const selectedOptions = Array.from(selectElement.selectedOptions);
+
+    selectedOptions.forEach(option => {
         const service = {
-            name: checkbox.value,
-            price: parseInt(checkbox.getAttribute('data-price')) // Konversi ke integer
+            name: option.value,
+            price: parseInt(option.getAttribute('data-price'), 10)
         };
-    
-        if (checkbox.checked) {
-            // Jika dicentang, tambahkan ke array
-            selectedServices.push(service);
-        } else {
-            totalPrice = totalPrice - service.price;
-            // Jika dihapus, cari dan hapus dari array
-            selectedServices = selectedServices.filter(item => item.name !== service.name);
-        }
-        updateAddOnsUI()
-        console.log("Updated Selected Services:", selectedServices);
-    }
+        selectedServices.push(service);
+    });
 
-    function updateAddOnsUI() {
-        const countAddOnsText = document.getElementById("countaddonstext");
-        const addOnContainer = document.getElementById("addonContainer");
+    console.log('Selected services:', selectedServices);
+}
 
-        // Update jumlah add-ons
-        countAddOnsText.textContent = selectedServices.length;
-
-        // Kosongkan container sebelum menambahkan ulang
-        addOnContainer.innerHTML = "";
-        let addonPrice = 0;
-        // Looping layanan yang dipilih dan masukkan ke dalam Pug
-        selectedServices.forEach(service => {
-            const serviceElement = document.createElement("div");
-            serviceElement.classList.add("flex", "justify-between");
-
-            serviceElement.innerHTML = `
-                <span class="font-semibold">${service.name}</span>
-                <span>${service.price.toLocaleString('en-AU', { style: 'currency', currency: 'AUD' })}</span>
-            `;
-
-            addOnContainer.appendChild(serviceElement);
-            addonPrice += service.price;
-        });
-        totalPrice = totalPrice+addonPrice;
-
-        document.getElementById("grandtotalpricetext").innerHTML = totalPrice.toLocaleString('en-AU', { style: 'currency', currency: 'AUD' });
-
-        gstPrice = Number(((10/100)*totalPrice)+totalPrice);
-        document.getElementById("totalgstprice").innerHTML = gstPrice.toLocaleString('en-AU', { style: 'currency', currency: 'AUD' });
-    }
 
     document.getElementById("submitForm").addEventListener("click", async function() {
         const formCustomer = document.getElementById('form-customer');
@@ -136,12 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Prepare service customer to send to the API
         const serviceData = {
-            name: serviceForm.get('serviceCleaning'),
+            name: document.getElementById("serviceId").value,
             homesize: document.getElementById("homesize").value,
             detailPackage: {
                 description: document.getElementById("pkgname").value
             },
         };
+
+        
 
         const orderData = {
             scheduleDate : customerForm.get('scheduleddate'), 
@@ -152,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 addOns : selectedServices
             }
         }
-
         console.log(orderData);
 
         const method = 'POST'; 

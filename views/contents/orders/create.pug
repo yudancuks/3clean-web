@@ -17,7 +17,7 @@ block content
         .col-lg-12.grid-margin.stretch-card
             .card
                 .card-body
-                    form#form-service.form-sample(enctype="multipart/form-data" method="POST")
+                    form#form-customer.form-sample(enctype="multipart/form-data" method="POST")
                         .row
                             .col-md-12
                                 .form-group.row
@@ -38,41 +38,62 @@ block content
                                         label(for='phone') Customer Phone
                                         input#phone.form-control(name='phone' type='text' placeholder='Phone..' required value=data ? data.phone : '')   
                         .row
-                            .col-md-12 
-                                .form-group.row 
-                                    .col-sm-12
-                                        label(for='address') Customer Address
-                                        textarea#address.form-control(name='address' placeholder='Enter customer address..' required)= data ? data.address : ''
+                            .col-md-12
+                                .form-group.row
+                                    .col-sm-6
+                                        label(for='scheduleddate') Scheduled Date
+                                        input.form-control#scheduleddate(name="scheduleddate" type="date" placeholder="input scheduled date..") 
+                                    .col-sm-6
+                                        label(class="label font-semibold") Scheduled Time
+                                        input.form-control#scheduledtime(name="scheduledtime" type="time" placeholder="input scheduled time..") 
+
                         .row
                             .col-md-12 
                                 .form-group.row 
                                     .col-sm-12
-                                        label(for='phone') Schedule Date
-                                        input#phone.form-control(name='phone' type='text' placeholder='Phone..' required value=data ? data.phone : '')   
-
-                               
+                                        label(for='address') Customer Address
+                                        textarea#address.form-control(name='address' placeholder='Enter customer address..' required)= data ? data.address : '' 
+                        
+                    form#form-service.form-sample(enctype="multipart/form-data" method="POST")
                         .row
                             .col-md-12
                                 .form-group.row
                                     .col-sm-6
                                         label(for='serviceId') Service Name
-                                        input#inputId(type='hidden' name='inputId' value=data ? data._id : '')
                                         select#serviceId.form-control(name="serviceId")
                                             each option in services
-                                                option(value=option._id, selected=data && data.serviceId === option._id)= option.name
+                                                option(value=option.name, selected=data && data.serviceId === option._id)= option.name
                                     .col-sm-6
                                         label(for='serviceId') Package Detail
-                                        input#inputId(type='hidden' name='inputId' value=data ? data._id : '')
-                                        select#serviceId.form-control(name="serviceId")
-                                            each option in services
-                                                option(value=option._id, selected=data && data.serviceId === option._id)= option.name                    
+                                        select#pkgname.form-control(name="pkgname")
+                        .row
+                            .col-md-12 
+                                .form-group.row 
+                                    .col-sm-12
+                                        label(for='homesize') Home Size
+                                        select#homesize.form-control(name="homesize")
+                                            option(value="Apartment") Apartment
+                                            option(value="Single Story Home") Single Story Home
+                                            option(value="Double Story Home") Double Story Home
+                                            option(value="Three Story Home") Three Story Home         
 
-                        .text-right
-                            button.btn.btn-gradient-primary.mr-2(type='submit') Submit
-                            button.btn.btn-light Clear Form
+
+                    form#form-addon.form-sample(enctype="multipart/form-data" method="POST")
+                        .row
+                            .col-md-12 
+                                .form-group.row 
+                                    .col-sm-12
+                                        label(for="addonslist") Choose Add-ons:
+                                        select.form-control#addonslist(name="addonslist[]" multiple onchange="updateSelectedServicesFromSelect(this)")
+                                            each service in addOns
+                                                option(value=service.name)= service.name
+                    .text-right
+                                button#submitForm.btn.btn-gradient-primary.mr-2(type='button') Submit
+                                button.btn.btn-light Clear Form
 
 block pageScripts
-    script(src=`${baseUrl}/public/js/forms/form-services.js`)
+    script(defer src=`${baseUrl}/public/js/forms/form-order.js`)
+
 
                                         
                             
