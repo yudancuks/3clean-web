@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form-discount');
     const discountId = document.getElementById('discountId'); // Assuming there's a hidden input with the discount ID
-    const API_URL = 'http://3cleaningsydney.com:3000/api';
+    const API_URL = 'http://3cleaningsydney.com/api';
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();

@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log('JavaScript Loaded!');
-  const API_URL = 'http://3cleaningsydney.com:3000/api';
+  const API_URL = 'http://3cleaningsydney.com/api';
   let totalPrice = 0;
   let gstPrice = 0;
 
