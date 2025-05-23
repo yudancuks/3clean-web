@@ -1,7 +1,7 @@
 //controllers/productController.js
 
 const axios = require('axios');
-const BACKEND_API = process.env.BACKEND_API || 'http://3cleaningsydney.com/api'; // Replace with your backend URL
+const BACKEND_API = process.env.BACKEND_API || 'https://3cleaningsydney.com/api'; // Replace with your backend URL
 
 exports.renderPostList = async (req, res) => {
     try {

@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form-hero');
     const heroId = document.getElementById('heroId'); // Assuming there's a hidden input with the hero ID
-    const API_URL = 'http://3cleaningsydney.com/api';
+    const API_URL = 'https://3cleaningsydney.com/api';
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();

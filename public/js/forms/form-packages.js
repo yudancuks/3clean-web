@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form-package');
     const inputId = document.getElementById('inputId'); // Assuming there's a hidden input with the post ID
     const serviceId = document.getElementById('serviceId');
-    const API_URL = 'http://3cleaningsydney.com/api';
+    const API_URL = 'https://3cleaningsydney.com/api';
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
