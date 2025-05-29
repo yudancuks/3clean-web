@@ -5,7 +5,7 @@ const BACKEND_API = process.env.BACKEND_API || 'http://localhost:3000/api'; // R
 
 exports.renderPageHouseCleaning = async (req, res) => {
     try {
-        const respPackage = await axios.get(`${BACKEND_API}/packages/detail/all?packageId=67d151d97d3a37c73d49d493`)
+        const respPackage = await axios.get(`${BACKEND_API}/packages/detail/all?packageId=6838a8dac9581466f6f62987`)
         const packages = respPackage.data;
         
         const respAddon = await axios.get(`${BACKEND_API}/addOns`);
