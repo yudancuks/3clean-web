@@ -1,7 +1,7 @@
 //controllers/dashboardController.js
 
 const axios = require('axios');
-const BACKEND_API = process.env.BACKEND_API || 'https://3cleaningsydney.com:3000'; // Replace with your backend URL
+const BACKEND_API = process.env.BACKEND_API || 'http://localhost:3000'; // Replace with your backend URL
 
 exports.renderDashboard = async (req, res) => {
     try {
@@ -11,6 +11,6 @@ exports.renderDashboard = async (req, res) => {
         //res.render('contents/dashboard');
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.redirect('/dashboard/login');
     }
 };

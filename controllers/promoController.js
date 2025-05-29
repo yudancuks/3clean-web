@@ -1,7 +1,7 @@
 //controllers/productController.js
 
 const axios = require('axios');
-const BACKEND_API = process.env.BACKEND_API || 'https://3cleaningsydney.com/api'; // Replace with your backend URL
+const BACKEND_API = process.env.BACKEND_API || 'http://localhost:3000/api'; // Replace with your backend URL
 
 exports.renderHeroList = async (req, res) => {
     try {
@@ -12,7 +12,7 @@ exports.renderHeroList = async (req, res) => {
         res.render('contents/promotions/hero-list', { heroes });
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
@@ -21,7 +21,7 @@ exports.renderHeroPost = async (req, res) => {
         res.render('contents/promotions/hero-post');
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
@@ -39,7 +39,7 @@ exports.renderHeroEdit = async (req, res) => {
        res.render('contents/promotions/hero-post', { promotion });
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
@@ -73,7 +73,7 @@ exports.renderPromoList = async (req, res) => {
         res.render('contents/promotions/promo-list', {promos});
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
@@ -82,7 +82,7 @@ exports.renderPromoPost = async (req, res) => {
         res.render('contents/promotions/promo-post');
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
@@ -119,6 +119,6 @@ exports.renderPromoEdit = async (req, res) => {
        res.render('contents/promotions/promo-post', { promotion });
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };

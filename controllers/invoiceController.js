@@ -1,7 +1,7 @@
 //controllers/orderController.js
 
 const axios = require('axios');
-const BACKEND_API = process.env.BACKEND_API || 'https://3cleaningsydney.com/api'; // Replace with your backend URL
+const BACKEND_API = process.env.BACKEND_API || 'http://localhost:3000/api'; // Replace with your backend URL
 
 exports.renderList = async (req, res) => {
     try {
@@ -11,7 +11,7 @@ exports.renderList = async (req, res) => {
         res.render('contents/invoices/list', { list });
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
@@ -32,7 +32,10 @@ exports.renderInvoice = async (req, res) => {
         res.setHeader('Content-Type', 'application/pdf');
 
         // Pipe the file stream to the response
-        response.data.pipe(res);
+        response.data.pipe(res).on('error', (err) => {
+            console.error('Stream error:', err);
+            res.status(500).send('Failed to stream PDF.');
+        });
     } catch (err) {
         console.error(err.message);
 

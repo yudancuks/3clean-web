@@ -5,14 +5,14 @@ block pageStyles
 
 block content
     .page-header
-        h3.page-title  #{data ? 'Edit Order' : 'Create New Order'}
+        h3.page-title  #{data ? 'View Order' : 'Create New Order'}
         nav(aria-label='breadcrumb')
             ol.breadcrumb
                 li.breadcrumb-item 
                     a(href=`${baseUrl}/dashboard`) Dashboard
                 li.breadcrumb-item 
                     a(href=`${baseUrl}/dashboard/orders/list`) Order List
-                li.breadcrumb-item.active(aria-current='page') #{data ? 'Edit Order' : 'Create New Order'}
+                li.breadcrumb-item.active(aria-current='page') #{data ? 'View Order' : 'Create New Order'}
     .row
         .col-lg-12.grid-margin.stretch-card
             .card
@@ -88,6 +88,7 @@ block content
                                             each service in addOns
                                                 option(value=service.name)= service.name
                     .text-right
+                            if !data
                                 button#submitForm.btn.btn-gradient-primary.mr-2(type='button') Submit
                                 button.btn.btn-light Clear Form
 

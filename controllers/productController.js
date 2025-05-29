@@ -1,7 +1,7 @@
 //controllers/productController.js
 
 const axios = require('axios');
-const BACKEND_API = process.env.BACKEND_API || 'https://3cleaningsydney.com/api'; // Replace with your backend URL
+const BACKEND_API = process.env.BACKEND_API || 'http://localhost:3000/api'; // Replace with your backend URL
 
 exports.renderProductList = async (req, res) => {
     try {
@@ -12,7 +12,7 @@ exports.renderProductList = async (req, res) => {
         res.render('contents/products/product-list', { products });
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
@@ -21,7 +21,7 @@ exports.renderProductPost = async (req, res) => {
         res.render('contents/products/product-post');
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
@@ -39,7 +39,7 @@ exports.renderProductEdit = async (req, res) => {
        res.render('contents/products/product-post', { product });
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
@@ -71,7 +71,7 @@ exports.renderDiscountList = async (req, res) => {
         res.render('contents/products/discount-list', {discounts});
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
@@ -80,7 +80,7 @@ exports.renderDiscountPost = async (req, res) => {
         res.render('contents/products/discount-post');
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
@@ -118,7 +118,7 @@ exports.renderDiscountEdit = async (req, res) => {
        res.render('contents/products/discount-post', { discount, validProductIds });
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 

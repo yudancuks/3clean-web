@@ -1,7 +1,7 @@
 //controllers/productController.js
 
 const axios = require('axios');
-const BACKEND_API = process.env.BACKEND_API || 'https://3cleaningsydney.com/api'; // Replace with your backend URL
+const BACKEND_API = process.env.BACKEND_API || 'http://localhost:3000/api'; // Replace with your backend URL
 
 exports.renderPostList = async (req, res) => {
     try {
@@ -12,7 +12,7 @@ exports.renderPostList = async (req, res) => {
         res.render('contents/blogs/post-list', { vsights });
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
@@ -21,7 +21,7 @@ exports.renderPostCreate = async (req, res) => {
         res.render('contents/blogs/post-create');
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
@@ -42,7 +42,7 @@ exports.renderBlogEdit = async (req, res) => {
        res.render('contents/blogs/post-create', { vsight, vsightCat });
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 

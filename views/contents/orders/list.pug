@@ -45,7 +45,5 @@ block content
                                             | #{addon.name}
                                     td= l.orderDetails.totalPrice
                                     td.text-center
-                                        a.btn.btn-primary.btn-sm(href=`/dashboard/orders/edit/${l._id}` title="Edit")
-                                            i.mdi.mdi-grease-pencil 
-                                        a.btn.btn-danger.btn-sm(href=`/dashboard/orders/delete/${l._id}` title="Delete" onclick="return confirm('Are you sure you want to delete this item?')") 
-                                            i.mdi.mdi-delete
+                                        a.btn.btn-primary.btn-sm(href=`/dashboard/orders/view/${l._id}` title="View")
+                                            i.mdi.mdi-eye-outline

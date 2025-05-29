@@ -1,7 +1,7 @@
 //controllers/productController.js
 
 const axios = require('axios');
-const BACKEND_API = process.env.BACKEND_API || 'https://3cleaningsydney.com/api'; // Replace with your backend URL
+const BACKEND_API = process.env.BACKEND_API || 'http://localhost:3000/api'; // Replace with your backend URL
 
 exports.renderUserList = async (req, res) => {
     try {
@@ -12,7 +12,7 @@ exports.renderUserList = async (req, res) => {
         res.render('contents/users/user-list', { users });
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
@@ -21,7 +21,7 @@ exports.renderUserCreate = async (req, res) => {
         res.render('contents/users/user-post');
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
@@ -40,7 +40,7 @@ exports.renderUserEdit = async (req, res) => {
        res.render('contents/users/user-post', { user });
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 

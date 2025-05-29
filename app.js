@@ -1,5 +1,6 @@
-const express = require('express');
 const path = require('path');
+require('dotenv').config();
+const express = require('express');
 const cookieParser = require('cookie-parser');
 
 const authRoute = require('./routes/authRoute.js');
@@ -58,9 +59,10 @@ app.use((req, res) => {
 
 
 // Start the server
+const DOMAIN = process.env.DOMAIN || 'http://localhost';
 const PORT = process.env.PORT || 9000;
 
-app.locals.baseUrl = `http://3cleaningsydney.com:${PORT}`; // Your base URL here
+app.locals.baseUrl = `${DOMAIN}:${PORT}`; // Your base URL here
 
 app.listen(PORT, () => {
     console.log(`Frontend running at ${app.locals.baseUrl}`);

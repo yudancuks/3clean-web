@@ -1,7 +1,7 @@
 //controllers/addonController.js
 
 const axios = require('axios');
-const BACKEND_API = process.env.BACKEND_API || 'https://3cleaningsydney.com/api'; // Replace with your backend URL
+const BACKEND_API = process.env.BACKEND_API || 'http://localhost:3000/api'; // Replace with your backend URL
 
 exports.renderList = async (req, res) => {
     try {
@@ -10,7 +10,7 @@ exports.renderList = async (req, res) => {
         res.render('contents/addons/list', { list });
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
@@ -19,7 +19,7 @@ exports.renderPost = async (req, res) => {
         res.render('contents/addons/create');
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
@@ -37,7 +37,7 @@ exports.renderPut = async (req, res) => {
        res.render('contents/addons/create', { data });
     } catch (err) {
         console.error(err.message);
-        res.redirect('/login');
+        res.render('contents/error-500');
     }
 };
 
