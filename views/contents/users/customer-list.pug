@@ -1,0 +1,28 @@
+extends ../../layout
+
+block content
+    .page-header
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item 
+                    a(href=`${baseUrl}/dashboard`) Dashboard
+                li.breadcrumb-item.active(aria-current='page') Customer List
+    .row
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    table#productTable.table.table-hover
+                        thead
+                            tr
+                                th FULL NAME
+                                th EMAIL
+                                th PHONE 
+                                th ADDRESS
+                        tbody
+                            each user in users
+                                tr
+                                    td= `${user.customer.firstname} ${user.customer.lastname}`
+                                    td= user.customer.email
+                                    td= user.customer.phone
+                                    td= user.customer.address
+             

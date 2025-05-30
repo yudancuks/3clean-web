@@ -8,7 +8,6 @@ exports.renderUserList = async (req, res) => {
 
         const response = await axios.get(`${BACKEND_API}/users`);
         const users = response.data;
-        console.log(users);
         res.render('contents/users/user-list', { users });
     } catch (err) {
         console.error(err.message);
@@ -61,5 +60,17 @@ exports.deleteUser = async (req, res) => {
             error: 'Failed to delete the product. Please try again later.',
             details: err.message
         });
+    }
+};
+
+exports.renderCustomerList = async (req, res) => {
+    try {
+
+        const response = await axios.get(`${BACKEND_API}/datacustomer`);
+        const users = response.data;
+        res.render('contents/users/customer-list', { users });
+    } catch (err) {
+        console.error(err.message);
+        res.render('contents/error-500');
     }
 };

@@ -13,6 +13,7 @@ exports.renderUserList = async (req, res) => {
             ...user,
             dob: user.dob ? moment(user.dob).format('DD MMMM YYYY') : 'N/A' // Handle missing DOB
         }));
+        console.log(users);
         res.render('contents/cleaner/user-list', { users });
     } catch (err) {
         console.error(err.message);

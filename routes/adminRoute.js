@@ -11,4 +11,6 @@ router.get('/peoples/admin-create',requireAuth, userController.renderUserCreate)
 router.get('/peoples/admin-edit/:id',requireAuth, userController.renderUserEdit);
 router.get('/peoples/admin-delete/:id',requireAuth, userController.deleteUser);
 
+router.get('/peoples/customer-list',requireAuth, userController.renderCustomerList);
+
 module.exports = router;

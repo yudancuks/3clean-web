@@ -9,9 +9,9 @@ block content
                     h4.font-weight-normal.mb-3
                         | Total Services
                         i.mdi.mdi-package-variant-closed.mdi-48px.float-right
-                    h2.mb-5  #{products ? products.totalProducts : '0'}
-                    h6.card-text Packages #{products ? products.productsWithDiscount : '0'}
-                    h6.card-text AddOns #{products ? products.productsWithoutDiscount : '0'}
+                    h2.mb-5  #{data ? data.packageCount : '0'}
+                    h6.card-text Packages #{data ? data.detailPackageCount : '0'}
+                    h6.card-text AddOns #{data ? data.addOnCount : '0'}
         .col-md-4.stretch-card.grid-margin
             .card.bg-gradient-info.card-img-holder.text-white
                 .card-body
@@ -19,10 +19,10 @@ block content
                     h4.font-weight-normal.mb-3
                         | Booking Order
                         i.mdi.mdi-wallet-giftcard.mdi-48px.float-right
-                    h2.mb-5 #{promo ? promo.totalPromotions : '0'}
-                    h6.card-text Pending #{promo ? promo.totalHeroSlider : '0'}
-                    h6.card-text On Progress  #{promo ? promo.totalPromoBanner : '0'}
-                    h6.card-text Completed  #{promo ? promo.totalPromoBanner : '0'}
+                    h2.mb-5 #{data ? data.ordersCount : '0'}
+                    h6.card-text Pending #{data ? data.ordersPendingCount : '0'}
+                    h6.card-text On Progress  #{data ? data.ordersOnProgressCount : '0'}
+                    h6.card-text Completed  #{data ? data.ordersSuccedCount : '0'}
         .col-md-4.stretch-card.grid-margin
             .card.bg-gradient-info.card-img-holder.text-white
                 .card-body
@@ -30,7 +30,7 @@ block content
                     h4.font-weight-normal.mb-3
                         | Total Users
                         i.mdi.mdi-diamond.mdi-48px.float-right
-                    h2.mb-5 #{review ? review.totalReview : '0'}
-                    h6.card-text Admins #{review ? review.totalVideo : '0'}
-                    h6.card-text Cleaners #{review ? review.totalShopee : '0'}
-                    h6.card-text Customer #{review ? review.totalWeb : '0'}
+                    h2.mb-5 #{data ? data.usersCount : '0'}
+                    h6.card-text Admins #{data ? data.adminsCount : '0'}
+                    h6.card-text Cleaners #{data ? data.cleanersCount : '0'}
+                    h6.card-text Customer #{data ? data.customersCount : '0'}

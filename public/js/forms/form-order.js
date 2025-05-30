@@ -149,3 +149,6 @@ function updateSelectedServicesFromSelect(selectElement) {
 
     window.updateSelectedServices = updateSelectedServices;
 });
+
+
+

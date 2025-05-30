@@ -27,7 +27,7 @@ block content
                         tbody
                             each l in list
                                 tr
-                                    td Order Received
+                                    td= l.status
                                     td= l.orderId
                                     td= l.orderDetails.customer.firstname+' '+l.orderDetails.customer.lastname 
                                     td= l.orderDetails.customer.email
@@ -44,3 +44,9 @@ block content
                                     td.text-center
                                         a.btn.btn-primary.btn-sm(href=`/dashboard/invoices/generate/${l.orderId}` title="Render")
                                             i.mdi.mdi-cloud-print-outline
+                                            br
+                                        a.btn.btn-warning.btn-sm(onclick=`updateOrderStatus('${l._id}')` title="Update Status")
+                                            i.mdi.mdi-pencil-outline
+block pageScripts
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+    script(defer src=`${baseUrl}/public/js/forms/form-statusorder.js`)

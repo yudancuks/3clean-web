@@ -25,7 +25,7 @@ block content
                                 th CUSTOMER ADDRESS
                                 th SERVICE NAME
                                 th SERVICE PRICE
-                                th ACTIONS
+                                th SCHEDULED DATE
                         tbody
                             each l in list
                                 tr
@@ -44,6 +44,6 @@ block content
                                             br
                                             | #{addon.name}
                                     td= l.orderDetails.totalPrice
-                                    td.text-center
-                                        a.btn.btn-primary.btn-sm(href=`/dashboard/orders/view/${l._id}` title="View")
-                                            i.mdi.mdi-eye-outline
+                                    td= l.scheduleDate.slice(0, 10)
+                                            br
+                                            | #{l.scheduleTime} 
