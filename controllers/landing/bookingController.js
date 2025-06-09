@@ -8,7 +8,7 @@ exports.renderPage = async (req, res) => {
         const respAddon = await axios.get(`${BACKEND_API}/addOns`);
         const addOns = respAddon.data;
 
-        res.render('landing/contents/booking', {addOns});
+        res.render('landing/contents/booking', {addOns, user: req.user});
     } catch (err) {
         console.error(err.message);
         res.render('contents/error-500');

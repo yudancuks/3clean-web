@@ -1,0 +1,94 @@
+extends ../../../landing
+
+block pageStyles
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css")
+
+
+block content
+     section.hero-section.bg-100.mt-8.mb-8
+        // Efect Blur
+        .absolute.top-10.left-0.w-40.h-40.bg-orange-200.rounded-full.blur-2xl.opacity-80
+        .absolute.right-0.w-40.h-40.bg-blue-200.rounded-full.blur-2xl.opacity-80(class='top-2/3')
+        .hero-content.container.flex-col.mx-auto
+                //- Container
+                div
+                    //- Card Container
+                    div(class="bg-white rounded-xl shadow p-4 space-y-4 max-h-[500px] min-h-[300px] overflow-y-auto")
+
+                        //- Header
+                        div(class="flex items-center justify-between")
+                            h2.text-lg.font-semibold All Transaction
+                            a(href="/user/signout" class="text-sm text-red-600 border border-red-600 px-3 py-1 rounded-md hover:bg-red-50") Logout
+                        //- Transaction Item
+                        if orders && orders.length > 0
+                            each order in orders
+                                div(class="flex items-center justify-between bg-gray-50 p-4 rounded-xl border")
+
+                                    //- Left: Icon and Info
+                                    div(class="flex items-center space-x-4")
+                                        h3.text-lg.font-semibold #{order.orderDetails.package.name}
+                                        span.text-sm.text-gray-500 #{new Date(order.scheduleDate).toLocaleDateString('en-US')}
+                                        div
+                                            span.text-blue-600.font-bold $#{order.orderDetails.totalPrice}
+                                            span.ml-2.text-xs.bg-purple-100.text-purple-600.px-2.py-1.rounded-full #{order.status}
+
+                                    //- Right: Status Bar
+                                    div(class="flex items-center space-x-8 ml-2")
+                                        //- Payment
+                                        div.flex.flex-col.items-center.text-blue-600
+                                            span.text-sm.mt-1 Payment
+
+                                        //- On Progress
+                                        div.flex.flex-col.items-center.text-gray-400
+                                            span.text-sm.mt-1 On Cleaning
+
+                                        //- Done
+                                        div.flex.flex-col.items-center.text-gray-400
+                                            span.text-sm.mt-1 Done
+                                    //- Detail Button
+                                    div(class="ml-6")
+                                        button(type="button" data-target=`detail-${order._id}` class="text-white border bg-blue-600 px-3 py-1 rounded-md text-sm toggle-detail-btn") See Detail
+                                //- Collapsible Detail Section
+                                div(id=`detail-${order._id}` class="mt-4 hidden transition-all duration-300 bg-white p-4 rounded-lg border overflow-hidden")
+                                        div(class="grid grid-cols-1 md:grid-cols-3 gap-6")
+                                            div
+                                                h4.text-md.font-semibold.mb-2 Package Details
+                                                ul.list-disc.list-inside.text-sm.text-gray-700
+                                                    li Service: #{order.orderDetails.package.name}
+                                                    li Package: #{order.orderDetails.package.detailPackage.name}
+                                    
+                                            //- Column 2: Add-ons
+                                            div
+                                                h4.text-md.font-semibold.mb-2 Add-ons
+                                                if order.orderDetails.addOns
+                                                    ul.list-disc.list-inside.text-sm.text-gray-700
+                                                    each addon in order.orderDetails.addOns
+                                                        li #{addon.name} - $#{addon.price}
+                                                else
+                                                    p.text-sm.text-gray-500 No add-ons
+
+                                            //- Column 3: Upload Payment
+                                            div
+                                                h4.text-md.font-semibold.mb-2 Payment Upload
+                                                form(action=`/upload-payment/${order._id}` method="POST" enctype="multipart/form-data")
+                                                    input(type="file" name="paymentImage" accept="image/*" class="mb-2 text-sm")
+                                                    button(
+                                                    type="submit"
+                                                    class="bg-blue-600 text-white px-3 py-1 rounded-md text-sm"
+                                                    ) Upload
+
+                                                    //- Preview Placeholder (optional)
+                                                    if order.paymentImageUrl
+                                                        img.mt-3.rounded-md.shadow-md(max-width="100%" src=order.paymentImageUrl alt="Payment Proof")
+                                                    else
+                                                        p.text-xs.text-gray-400.mt-2 No payment image uploaded yet
+
+block pageScripts
+    script.
+        document.querySelectorAll('.toggle-detail-btn').forEach(button => {
+            button.addEventListener('click', () => {
+            const targetId = button.dataset.target;
+            const detailDiv = document.getElementById(targetId);
+            detailDiv.classList.toggle('hidden');
+            });
+        });

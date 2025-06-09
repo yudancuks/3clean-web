@@ -6,7 +6,7 @@ const BACKEND_API = process.env.BACKEND_API || 'http://localhost:3000/api'; // R
 exports.renderPage = async (req, res) => {
     try {
         
-        res.render('landing/contents/reviews');
+        res.render('landing/contents/reviews',{user: req.user});
     } catch (err) {
         console.error(err.message);
         res.render('contents/error-500');

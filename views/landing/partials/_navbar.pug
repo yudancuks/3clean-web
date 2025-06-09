@@ -19,7 +19,10 @@ nav.bg-white.shadow-sm.sticky.top-0.z-50
 
     // Right Buttons (Desktop)
     .hidden(class="md:flex space-x-4")
-      button(class="px-6 py-2 btn btn-outline btn-primary rounded-full") Sign In
+      if typeof user !== 'undefined' && user !== null
+        a.a-nav(href='/user/orders' class='hover:text-blue-500 mt-2')=user.email
+      else
+        a(href="/user/login" class="px-6 py-2 btn btn-outline btn-primary rounded-full") Sign In
       a(href="/book-now" class="px-6 py-2 btn btn-primary rounded-full text-white") Book Now
 
     // Mobile Menu Button
@@ -34,7 +37,10 @@ nav.bg-white.shadow-sm.sticky.top-0.z-50
     a(href="/about-us" class="block text-gray-700") About
     a(href="/prices/house-cleaning" class="block text-gray-700") Price
     a(href="/contact" class="block text-gray-700") Contact
-    button(class="w-full px-4 py-2 btn btn-outline btn-primary") Sign In
+    if user
+      a(href= "/user/orders" class="w-full px-4 py-2 btn btn-outline btn-primary")=user.email
+    else  
+      a(hre="/user/login" class="w-full px-4 py-2 btn btn-outline btn-primary") Sign In
     a(href="/book-now" class="w-full px-4 py-2 btn btn-primary text-white") Book Now
 
 script.

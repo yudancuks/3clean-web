@@ -10,7 +10,7 @@ exports.renderPageHouseCleaning = async (req, res) => {
         
         const respAddon = await axios.get(`${BACKEND_API}/addOns`);
         const addOns = respAddon.data;
-        res.render('landing/contents/price-house-cleaning', {packages,addOns});
+        res.render('landing/contents/price-house-cleaning', {packages,addOns, user: req.user});
     } catch (err) {
         console.error(err.message);
         res.render('contents/error-500'); // Render a custom 404 page

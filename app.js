@@ -18,6 +18,8 @@ const invoiceRoute = require('./routes/invoiceRoute.js');
 //landing route
 const indexRoute = require('./routes/landing/indexRoute.js');
 
+const userRoute = require('./routes/landing/userRoute.js');
+
 const app = express();
 
 // Use cookie-parser
@@ -49,6 +51,7 @@ app.use('/dashboard/orders', orderRoute);
 app.use('/dashboard/invoices', invoiceRoute);
 
 app.use('/', indexRoute);
+app.use('/', userRoute);
 
 // Catch-all middleware for undefined routes
 app.use((req, res) => {

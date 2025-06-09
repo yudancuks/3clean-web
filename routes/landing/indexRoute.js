@@ -9,6 +9,9 @@ const reviewController = require('../../controllers/landing/reviewController.js'
 const priceController = require('../../controllers/landing/priceController.js');
 const bookingController = require('../../controllers/landing/bookingController.js');
 
+const attachUser = require('../../middleware/attachUser');
+
+router.use(attachUser);
 
 // Home Page (Public Page)
 router.get('/', indexController.renderHome);

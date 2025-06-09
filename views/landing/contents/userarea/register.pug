@@ -1,0 +1,73 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Sign Up - 3Cleaning
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css")
+
+  body(class="bg-gray-100 font-sans")
+    div(class="min-h-screen flex")
+      
+      // Left Side: Form Section
+      div(class="w-full md:w-1/2 flex items-center justify-center bg-white p-10")
+        div(class="w-full max-w-md")
+
+          // Logo Section
+          div(class="flex items-center mb-6")
+            img(src="/assets/images/landing/logo.svg" alt="Logo")
+
+
+          h2(class="text-2xl font-bold mb-6") Sign Up
+
+          form#form-register
+            // Email
+            label(class="block text-sm font-medium mb-1") Email
+            input(type="email", name="email" placeholder="Input your active email", class="w-full border rounded px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400")
+
+            // Phone
+            label(class="block text-sm font-medium mb-1") Number Phone
+            input(type="text", name="phone", placeholder="Input your number phone", class="w-full border rounded px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400")
+
+            // Full Name
+            label(class="block text-sm font-medium mb-1") First Name
+            input(type="text", name="firstname" placeholder="Input your firstname", class="w-full border rounded px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400")
+
+            label(class="block text-sm font-medium mb-1") Last Name
+            input(type="text", name="lastname" placeholder="Input your lastname", class="w-full border rounded px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400")
+
+            // Password
+            label(class="block text-sm font-medium mb-1") Create Password
+            input(type="password", name="password", placeholder="Create new password for your account", class="w-full border rounded px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400")
+
+            // Confirm Password
+            label(class="block text-sm font-medium mb-1") Confirmation Password
+            input(type="password", name="repassword", placeholder="Re input your password", class="w-full border rounded px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400")
+
+            label(class="block text-sm font-medium mb-1") Address
+            input(type="text", name="address" placeholder="Input your address", class="w-full border rounded px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400")
+
+            // Sign Up button
+            button(type="submit", class="w-full bg-blue-700 text-white py-2 rounded font-semibold") Sign Up
+
+            // Login Link
+            p(class="text-sm mt-4 text-center")
+              | Have Account?
+              a(href="/user/login", class="text-blue-600 font-medium ml-1") Login
+
+      // Right Side: Image and Text
+      div(class="hidden md:flex w-1/2 bg-cover bg-center relative items-center justify-center" style="background-image: url('/assets/images/landing/signinbanner.png')")
+        div(class="absolute inset-0 bg-black opacity-20 rounded-l-[40px]")
+        div(class="relative p-10 text-center flex flex-col justify-end h-full")
+          h1(class="text-4xl font-bold text-blue-700 mb-4")
+            | WELCOME TO OUR 
+            br
+            | PRO-CLEANING COMPANY!
+          p(class="text-sm text-white mb-2")
+            | Expert Cleaning Solutions for Homes and Offices – Trust Us to Make
+            br
+            | Every Corner Sparkle with Care and Precision!"
+
+
+block pageScripts
+    script(src=`${baseUrl}/public/js/forms/customer-register.js`) 
